@@ -6,58 +6,58 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Catalog Page</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <p>Browse our catalog of totes bag.</p>
                 </div>
                 <div class="content">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="d-none d-md-block">
-                                <div class="filters">
+                                <form class="filters" action="{{route('home')}}">
                                     <div class="filter-item">
                                         <h3>Categories</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Seasonal</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Limited Edition</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Collab Series</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">All Time</label></div>
+                                        @foreach ($categories as $index => $category)
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="category-{{$index}}" name="category" {{$category->id == $request->category->id ? 'checked' : ''}}><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
+                                        @endforeach
                                     </div>
                                     <div class="filter-item">
                                         <h3>Material</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Cotton</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Canvas</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Jute</label></div>
+                                        @foreach ($materials as $index => $material)
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="material-{{$index}}" name="material"><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
+                                        @endforeach
                                     </div>
                                     <div class="filter-item">
                                         <h3>Size</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">30cm * 40cm</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">35cm * 38cm</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-10"><label class="form-check-label" for="formCheck-9">50cm * 40cm</label></div>
+                                        @foreach ($sizes as $index => $size)
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="size-{{$index}}" name="size"><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
+                                        @endforeach
                                     </div>
-                                </div>
+                                    <button class="btn btn-primary w-100">Filter</button>
+                                </form>
                             </div>
                             <div class="d-md-none"><a class="btn btn-link d-md-none filter-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="filters" href="#filters" role="button">Filters<i class="icon-arrow-down filter-caret"></i></a>
                                 <div class="collapse"
                                     id="filters">
-                                    <div class="filters">
+                                    <form class="filters" action="{{route('home')}}">
                                         <div class="filter-item">
                                             <h3>Categories</h3>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Seasonal</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Limited Edition</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Collab Series</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">All Time</label></div>
+                                            @foreach ($categories as $index => $category)
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="category-{{$index}}" name="category"><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
+                                            @endforeach
                                         </div>
                                         <div class="filter-item">
                                             <h3>Material</h3>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Cotton</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Canvas</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Jute</label></div>
+                                            @foreach ($materials as $index => $material)
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="material-{{$index}}" name="material"><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
+                                            @endforeach
                                         </div>
                                         <div class="filter-item">
                                             <h3>Size</h3>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">30cm * 40cm</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">35cm * 38cm</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-10"><label class="form-check-label" for="formCheck-9">50cm * 40cm</label></div>
+                                            @foreach ($sizes as $index => $size)
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="size-{{$index}}" name="size"><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
+                                            @endforeach
                                         </div>
-                                    </div>
+                                        <button class="btn btn-primary">Filter</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

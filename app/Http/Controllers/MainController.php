@@ -14,8 +14,6 @@ class MainController extends Controller
     // Get for Viewing Home Page
     public function getHome(Request $request) {
 
-        dd(Category::all());
-
         // Products
         $products = Product::all()->toQuery();
 
