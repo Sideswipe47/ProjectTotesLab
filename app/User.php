@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -36,4 +36,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Member has one Shopping Cart
+    public function shopping_cart() {
+
+        // Check Shopping Cart
+        $shopping_cart = $this->hasOne(ShoppingCart::class);
+
+        // Create Shopping Cart if NULL
+        if (!$shopping_cart) {
+            $shopping_cart = ShoppingCart::create(['user_id' => $this->id]);
+        }
+
+        return $shopping_cart;
+
+    }
+
+    // Member has many Transactions done
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
+    }
+
+    // Member has many Promotion cards
+    public function promotions() {
+        return $this->hasMany(UserPromotion::class);
+    }
+
 }

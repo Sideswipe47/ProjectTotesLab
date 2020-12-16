@@ -1,0 +1,28 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    
+    // Fillables Property
+    protected $fillable = ['category_id', 'material_id', 'size_id', 'name', 'price'];
+
+    // Product has 1 Material
+    public function material() {
+        return $this->belongsTo(Material::class);
+    }
+
+    // Product has 1 Size
+    public function size() {
+        return $this->belongsTo(Size::class);
+    }
+
+    // Product has 1 Category
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+}
