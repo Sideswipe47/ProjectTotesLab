@@ -19,6 +19,9 @@ Route::get('/', function () {
 });
 Route::get('/home', 'MainController@getHome')->name('home');
 
+Route::get('/product/view/{id}', 'ProductController@getProduct')->name('product/view');
+Route::get('/type/view/{id}', 'ProductTypeController@getProductType')->name('product_type/view');
+
 // Guest
 Route::middleware(['auth'])->group(function () {
 
@@ -42,14 +45,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/product/create', 'ProductController@getCreate')->name('product/create');
         Route::post('/product/create', 'ProductController@postCreate');
         Route::get('/product/update', 'ProductController@getUpdate')->name('product/update');
-        Route::promotion('/product/update', 'ProductController@postUpdate');
+        Route::patch('/product/update', 'ProductController@postUpdate');
         Route::delete('/product/delete', 'ProductController@postDelete')->name('product/delete');
 
         // Product Type
         Route::get('/type/create', 'ProductTypeController@getCreate')->name('product_type/create');
         Route::post('/type/create', 'ProductTypeController@postCreate');
         Route::get('/type/update', 'ProductTypeController@getUpdate')->name('product_type/update');
-        Route::promotion('/type/update', 'ProductTypeController@postUpdate');
+        Route::patch('/type/update', 'ProductTypeController@postUpdate');
         Route::delete('/type/delete', 'ProductTypeController@postDelete')->name('product_type/delete');
 
         // Promotion
@@ -69,9 +72,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Shopping Cart
-    Route::middleware(['role:admin'])->group(function() {
-
-        
+    Route::middleware(['role:member'])->group(function() {
 
     });
 
