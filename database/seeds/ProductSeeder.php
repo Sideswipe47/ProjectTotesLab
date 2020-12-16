@@ -28,9 +28,9 @@ class ProductSeeder extends Seeder
         $product_data = [];
         for ($i = 0; $i < 50; ++$i) {
             $product_data[] = [
-                'category_id' => $categories[rand(1, count($categories))]->id,
-                'material_id' => $materials[rand(1, count($materials))]->id,
-                'size_id' => $sizes[rand(1, count($sizes))]->id,
+                'category_id' => $categories[rand(0, count($categories) - 1)]->id,
+                'material_id' => $materials[rand(0, count($materials) - 1)]->id,
+                'size_id' => $sizes[rand(0, count($sizes) - 1)]->id,
                 'name' => $faker->words(rand(1, 3), true),
                 'price' => 1000 * rand(20, 50)
             ];
