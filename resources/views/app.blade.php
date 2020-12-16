@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('assets/fonts/simple-line-icons.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="{{asset('assets/css/smoothproducts.css')}}">
+    @yield('head')
 </head>
 
 <body>
@@ -87,6 +88,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="{{asset('assets/js/smoothproducts.min.js')}}"></script>
     <script src="{{asset('assets/js/theme.js')}}"></script>
+    @yield('body')
 </body>
 
 </html>

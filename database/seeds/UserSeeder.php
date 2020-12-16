@@ -28,6 +28,27 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('mario123'),
                 'role' => 'admin',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Li Jialong',
+                'email' => 'lijia@gmail.com',
+                'password' => bcrypt('lijia123'),
+                'role' => 'member',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Melvin Maitri',
+                'email' => 'melvin@gmail.com',
+                'password' => bcrypt('melvin123'),
+                'role' => 'member',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Kalyana Cecilia Libitha Tanubrata',
+                'email' => 'cecil@gmail.com',
+                'password' => bcrypt('cecil123'),
+                'role' => 'member',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]
         ];
 
