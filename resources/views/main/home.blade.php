@@ -16,19 +16,19 @@
                                     <div class="filter-item">
                                         <h3>Categories</h3>
                                         @foreach ($categories as $index => $category)
-                                        <div class="form-check"><input class="form-check-input" type="radio" id="category-{{$index}}" name="category" {{$category->id == $request->category->id ? 'checked' : ''}}><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="category-{{$index}}" name="category" value="{{$category->id}}" {{$category->id == $request->category ? 'checked' : ''}}><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
                                         @endforeach
                                     </div>
                                     <div class="filter-item">
                                         <h3>Material</h3>
                                         @foreach ($materials as $index => $material)
-                                        <div class="form-check"><input class="form-check-input" type="radio" id="material-{{$index}}" name="material"><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="material-{{$index}}" name="material" value="{{$material->id}}" {{$material->id == $request->material ? 'checked' : ''}}><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
                                         @endforeach
                                     </div>
                                     <div class="filter-item">
                                         <h3>Size</h3>
                                         @foreach ($sizes as $index => $size)
-                                        <div class="form-check"><input class="form-check-input" type="radio" id="size-{{$index}}" name="size"><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="size-{{$index}}" name="size" value="{{$size->id}}" {{$size->id == $request->size ? 'checked' : ''}}><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
                                         @endforeach
                                     </div>
                                     <button class="btn btn-primary w-100">Filter</button>
@@ -41,19 +41,19 @@
                                         <div class="filter-item">
                                             <h3>Categories</h3>
                                             @foreach ($categories as $index => $category)
-                                            <div class="form-check"><input class="form-check-input" type="radio" id="category-{{$index}}" name="category"><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="category-{{$index}}" name="category" value="{{$category->id}}" {{$category->id == $request->category ? 'checked' : ''}}><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
                                             @endforeach
                                         </div>
                                         <div class="filter-item">
                                             <h3>Material</h3>
                                             @foreach ($materials as $index => $material)
-                                            <div class="form-check"><input class="form-check-input" type="radio" id="material-{{$index}}" name="material"><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="material-{{$index}}" name="material" value="{{$material->id}}" {{$material->id == $request->material ? 'checked' : ''}}><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
                                             @endforeach
                                         </div>
                                         <div class="filter-item">
                                             <h3>Size</h3>
                                             @foreach ($sizes as $index => $size)
-                                            <div class="form-check"><input class="form-check-input" type="radio" id="size-{{$index}}" name="size"><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="size-{{$index}}" name="size" value="{{$size->id}}" {{$size->id == $request->size ? 'checked' : ''}}><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
                                             @endforeach
                                         </div>
                                         <button class="btn btn-primary">Filter</button>
