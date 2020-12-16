@@ -22,7 +22,7 @@
                     <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Tracking</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalog-page.html">Catalog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Account</a></li>
                 </ul>
             </div>
         </div>
