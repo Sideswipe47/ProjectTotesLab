@@ -19,10 +19,14 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+                    @if(Auth::check() && Auth::user()->role == 'member')
+                    <li class="nav-item"><a class="nav-link" href="index.html">Shopping Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="features.html">Transaction History</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Tracking</a></li>
+                    @endif
+
                     <li class="nav-item"><a class="nav-link" href="catalog-page.html">Catalog</a></li>
+                    
                     @guest
                     <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Register</a></li>
