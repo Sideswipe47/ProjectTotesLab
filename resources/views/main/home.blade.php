@@ -29,7 +29,7 @@
                                     <div class="filter-item">
                                         <h3>Size</h3>
                                         @foreach ($sizes as $index => $size)
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size-{{$index}}" name="size[]" value="{{$size->id}}" {{isset($request->size) && in_array($size->id, $request->size) ? 'checked' : ''}}><><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size-{{$index}}" name="size[]" value="{{$size->id}}" {{isset($request->size) && in_array($size->id, $request->size) ? 'checked' : ''}}><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
                                         @endforeach
                                     </div>
                                     <button class="btn btn-primary w-100">Filter</button>
@@ -43,19 +43,19 @@
                                         <div class="filter-item">
                                             <h3>Categories</h3>
                                             @foreach ($categories as $index => $category)
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="category-{{$index}}" name="category[]" value="{{$category->id}}" {{isset($request->category) && in_array($category->id, $request->category) ? 'checked' : ''}}><><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="category-{{$index}}" name="category[]" value="{{$category->id}}" {{isset($request->category) && in_array($category->id, $request->category) ? 'checked' : ''}}><label class="form-check-label" for="category-{{$index}}">{{$category->name}}</label></div>
                                             @endforeach
                                         </div>
                                         <div class="filter-item">
                                             <h3>Material</h3>
                                             @foreach ($materials as $index => $material)
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="material-{{$index}}" name="material[]" value="{{$material->id}}" {{isset($request->material) && in_array($material->id, $request->material) ? 'checked' : ''}}><><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="material-{{$index}}" name="material[]" value="{{$material->id}}" {{isset($request->material) && in_array($material->id, $request->material) ? 'checked' : ''}}><label class="form-check-label" for="material-{{$index}}">{{$material->name}}</label></div>
                                             @endforeach
                                         </div>
                                         <div class="filter-item">
                                             <h3>Size</h3>
                                             @foreach ($sizes as $index => $size)
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="size-{{$index}}" name="size[]" value="{{$size->id}}" {{isset($request->size) && in_array($size->id, $request->size) ? 'checked' : ''}}><><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="size-{{$index}}" name="size[]" value="{{$size->id}}" {{isset($request->size) && in_array($size->id, $request->size) ? 'checked' : ''}}><label class="form-check-label" for="size-{{$index}}">{{$size->toString}}</label></div>
                                             @endforeach
                                         </div>
                                         <button class="btn btn-primary">Filter</button>
