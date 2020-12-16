@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class TransactionSeeder extends Seeder
@@ -11,6 +12,12 @@ class TransactionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
+        $users = User::all();
+        $transaction_data = [];
+        foreach ($users as $user) {
+            
+        }
+
     }
 }
