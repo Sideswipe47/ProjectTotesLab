@@ -20,4 +20,9 @@ class ShoppingCart extends Model
         return $this->hasMany(CartItem::class);
     }
 
+    public function getGrandTotalAttribute(){
+        return $this->cartItems->map(function ($item, $key) {
+            return $item->subtotal;
+        })->sum();
+    }
 }
