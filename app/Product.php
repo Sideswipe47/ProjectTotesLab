@@ -25,4 +25,15 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    // Product has many Reviews
+    public function reviews() {
+        return $this->hasMany(UserReview::class);
+    }
+
+    // Product Rating
+    public function getRatingAttribute() {
+        $review = $this->reviews;
+        return $review->avg('rating');
+    }
+
 }

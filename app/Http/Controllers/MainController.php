@@ -18,14 +18,14 @@ class MainController extends Controller
         $products = Product::all()->toQuery();
 
         // Filtering Products
-        if ($request->product_id) {
-            $products = $products->where('product_id', $request->product_id);
+        if ($request->size) {
+            $products = $products->whereIn('size_id', $request->size);
         }
-        if ($request->material_id) {
-            $products = $products->where('material_id', $request->material_id);
+        if ($request->material) {
+            $products = $products->whereIn('material_id', $request->material);
         }
-        if ($request->category_id) {
-            $products = $products->where('category_id', $request->category_id);
+        if ($request->category) {
+            $products = $products->whereIn('category_id', $request->category);
         }
 
         // Filters
@@ -33,7 +33,10 @@ class MainController extends Controller
         $materials = Material::all();
         $sizes = Size::all();
 
+        // Append
         $products = $products->paginate(9);
+        $products->appends(['size' => $request->size, 'material' => $request->material, 'category' => $request->category]);
+
         return view('main.home', compact('categories', 'materials', 'sizes', 'products', 'request'));
 
     }

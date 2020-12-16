@@ -23,7 +23,7 @@ Route::get('/product/view/{id}', 'ProductController@getProduct')->name('product/
 Route::get('/type/view/{id}', 'ProductTypeController@getProductType')->name('product_type/view');
 
 // Guest
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['guest'])->group(function () {
 
     // Login
     Route::get('/login', 'AuthController@getLogin')->name('login');

@@ -62,4 +62,9 @@ class User extends Authenticatable
         return $this->hasMany(UserPromotion::class);
     }
 
+    // Member has many reviews
+    public function reviews() {
+        return $this->hasMany(UserReview::class);
+    }
+
 }
