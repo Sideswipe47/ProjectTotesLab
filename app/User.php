@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     // Member has one Shopping Cart
-    public function shopping_cart() {
+    public function shoppingCart() {
 
         // Check Shopping Cart
         $shopping_cart = $this->hasOne(ShoppingCart::class);
