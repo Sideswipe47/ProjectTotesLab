@@ -18,8 +18,8 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Shopping Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="features.html">Transaction History</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Tracking</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalog-page.html">Catalog</a></li>
                     @guest
