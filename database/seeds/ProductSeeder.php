@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
                 'category_id' => $categories[rand(0, count($categories) - 1)]->id,
                 'material_id' => $materials[rand(0, count($materials) - 1)]->id,
                 'size_id' => $sizes[rand(0, count($sizes) - 1)]->id,
-                'name' => $faker->words(rand(1, 3), true),
+                'name' => ucwords($faker->words(rand(1, 3), true)),
                 'price' => 1000 * rand(20, 50)
             ];
         }

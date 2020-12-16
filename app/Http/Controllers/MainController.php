@@ -33,6 +33,7 @@ class MainController extends Controller
         $materials = Material::all();
         $sizes = Size::all();
 
+        $products = $products->paginate(9);
         return view('main.home', compact('categories', 'materials', 'sizes', 'products', 'request'));
 
     }
