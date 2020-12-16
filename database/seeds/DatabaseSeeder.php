@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
         
         $this->call(UserSeeder::class);
 
+        $this->call(DeliveryServiceSeeder::class);
+        $this->call(DeliveryOptionSeeder::class);
+
         $this->call(MaterialSeeder::class);
         $this->call(SizeSeeder::class);
         $this->call(CategorySeeder::class);
@@ -23,6 +26,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ShoppingCartSeeder::class);
         $this->call(CartItemSeeder::class);
+
+        $this->call(PromotionSeeder::class);
+        $this->call(UserPromotionSeeder::class);
 
     }
 }

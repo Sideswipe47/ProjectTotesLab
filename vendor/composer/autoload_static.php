@@ -3564,6 +3564,7 @@ class ComposerStaticInitcb468bf6054138eebdb9594f450b48e2
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
         'ProductSeeder' => __DIR__ . '/../..' . '/database/seeds/ProductSeeder.php',
+        'PromotionSeeder' => __DIR__ . '/../..' . '/database/seeds/PromotionSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
@@ -4923,7 +4924,13 @@ class ComposerStaticInitcb468bf6054138eebdb9594f450b48e2
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'TransactionDetailSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionDetailSeeder.php',
+        'TransactionSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionSeeder.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+<<<<<<< HEAD
+=======
+        'UserPromotionSeeder' => __DIR__ . '/../..' . '/database/seeds/UserPromotionSeeder.php',
+>>>>>>> 270dcb8a084a129272bc6fba12407215f68ab6da
         'UserReviewSeeder' => __DIR__ . '/../..' . '/database/seeds/UserReviewSeeder.php',
         'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
