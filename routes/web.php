@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Shopping Cart
     Route::middleware(['role:member'])->group(function() {
-
+        Route::get('/cart/1', 'ShoppingCartController@getPage1')->name('cart/page/1');
     });
 
 });
