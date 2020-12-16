@@ -17,6 +17,7 @@ return array(
     'App\\Http\\Controllers\\MainController' => $baseDir . '/app/Http/Controllers/MainController.php',
     'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
     'App\\Http\\Controllers\\ProductTypeController' => $baseDir . '/app/Http/Controllers/ProductTypeController.php',
+    'App\\Http\\Controllers\\ShoppingCartController' => $baseDir . '/app/Http/Controllers/ShoppingCartController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -4453,10 +4454,7 @@ return array(
     'TransactionDetailSeeder' => $baseDir . '/database/seeds/TransactionDetailSeeder.php',
     'TransactionSeeder' => $baseDir . '/database/seeds/TransactionSeeder.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-<<<<<<< HEAD
-=======
     'UserPromotionSeeder' => $baseDir . '/database/seeds/UserPromotionSeeder.php',
->>>>>>> 270dcb8a084a129272bc6fba12407215f68ab6da
     'UserReviewSeeder' => $baseDir . '/database/seeds/UserReviewSeeder.php',
     'UserSeeder' => $baseDir . '/database/seeds/UserSeeder.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',

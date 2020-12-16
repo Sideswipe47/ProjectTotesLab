@@ -491,6 +491,7 @@ class ComposerStaticInitcb468bf6054138eebdb9594f450b48e2
         'App\\Http\\Controllers\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\ProductTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductTypeController.php',
+        'App\\Http\\Controllers\\ShoppingCartController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShoppingCartController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -4927,10 +4928,7 @@ class ComposerStaticInitcb468bf6054138eebdb9594f450b48e2
         'TransactionDetailSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionDetailSeeder.php',
         'TransactionSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionSeeder.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-<<<<<<< HEAD
-=======
         'UserPromotionSeeder' => __DIR__ . '/../..' . '/database/seeds/UserPromotionSeeder.php',
->>>>>>> 270dcb8a084a129272bc6fba12407215f68ab6da
         'UserReviewSeeder' => __DIR__ . '/../..' . '/database/seeds/UserReviewSeeder.php',
         'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
