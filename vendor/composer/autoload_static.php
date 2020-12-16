@@ -4927,7 +4927,10 @@ class ComposerStaticInitcb468bf6054138eebdb9594f450b48e2
         'TransactionDetailSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionDetailSeeder.php',
         'TransactionSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionSeeder.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+<<<<<<< HEAD
+=======
         'UserPromotionSeeder' => __DIR__ . '/../..' . '/database/seeds/UserPromotionSeeder.php',
+>>>>>>> 270dcb8a084a129272bc6fba12407215f68ab6da
         'UserReviewSeeder' => __DIR__ . '/../..' . '/database/seeds/UserReviewSeeder.php',
         'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',

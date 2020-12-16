@@ -4453,7 +4453,10 @@ return array(
     'TransactionDetailSeeder' => $baseDir . '/database/seeds/TransactionDetailSeeder.php',
     'TransactionSeeder' => $baseDir . '/database/seeds/TransactionSeeder.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+<<<<<<< HEAD
+=======
     'UserPromotionSeeder' => $baseDir . '/database/seeds/UserPromotionSeeder.php',
+>>>>>>> 270dcb8a084a129272bc6fba12407215f68ab6da
     'UserReviewSeeder' => $baseDir . '/database/seeds/UserReviewSeeder.php',
     'UserSeeder' => $baseDir . '/database/seeds/UserSeeder.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
