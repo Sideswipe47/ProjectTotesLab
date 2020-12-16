@@ -22,7 +22,19 @@
                     <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Tracking</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalog-page.html">Catalog</a></li>
+                    @guest
                     <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Register</a></li>
+                    @endguest
+
+                    @auth
+                    <li class="nav-item">
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button class="nav-link btn btn-link">Logout</button>
+                        </form>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>

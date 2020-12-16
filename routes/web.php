@@ -38,6 +38,8 @@ Route::middleware(['guest'])->group(function () {
 // Authenticated
 Route::middleware(['auth'])->group(function () {
 
+    Route::post('/logout', 'AuthController@logout')->name('logout');
+
     // Admin
     Route::middleware(['role:admin'])->group(function() {
 
