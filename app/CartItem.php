@@ -22,7 +22,7 @@ class CartItem extends Model
 
     // Function to get Shopping Cart Subtotal
     public function getSubtotalAttribute() {
-        return $this->quantity * $this->product->price
+        return $this->quantity * $this->product->price;
     }
 
 }
