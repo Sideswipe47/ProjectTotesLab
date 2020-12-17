@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,9 +15,18 @@ class DeliveryServiceSeeder extends Seeder
     {
         
         $delivery_service_data = [
-            ['name' => 'JNE'],
-            ['name' => 'AnterAja'],
-            ['name' => 'TiKi'],
+            [
+                'name' => 'JNE',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'AnterAja',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'TiKi',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ];
 
         DB::table('delivery_services')->insert($delivery_service_data);

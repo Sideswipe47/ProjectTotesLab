@@ -3,6 +3,7 @@
 use App\DeliveryService;
 use App\Promotion;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +43,8 @@ class TransactionSeeder extends Seeder
                         'promotion_id' => $promotion,
                         'card_number' => $faker->creditCardNumber(),
                         'address' => $faker->address,
-                        'note' => $faker->sentences(rand(1, 3), true)
+                        'note' => $faker->sentences(rand(1, 3), true),
+                        'created_at' => Carbon::now()->format('Y-m-d H:i:s')
                     ];
                     $count += 1;
                     if ($count >= $max_transaction) {

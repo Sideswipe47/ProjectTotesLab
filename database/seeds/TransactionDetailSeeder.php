@@ -2,6 +2,7 @@
 
 use App\Product;
 use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +30,8 @@ class TransactionDetailSeeder extends Seeder
                         'transaction_id' => $transaction->id,
                         'product_id' => $product->id,
                         'quantity' => rand(1, $max_quantity),
-                        'price' => $product->price
+                        'price' => $product->price,
+                        'created_at' => Carbon::now()->format('Y-m-d H:i:s')
                     ];
                     $count += 1;
                     if ($count >= $max_product) {

@@ -21,7 +21,8 @@ class PromotionSeeder extends Seeder
             $promotion_data[] = [
                 'name' => 'Promotion #' . ($i + 1),
                 'discount' => 5 * rand(1, 10),
-                'expired_date' => Carbon::now()->addDays(rand(30, 360))->format('Y-m-d')
+                'expired_date' => Carbon::now()->addDays(rand(30, 360))->format('Y-m-d'),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ];
         }
 
