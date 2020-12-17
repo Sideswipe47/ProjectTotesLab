@@ -67,10 +67,22 @@
                                 </div>
                             </div>
                             <div class="col-sm-8">
-                                <div class="form-group"><label for="card-number">Card Number</label><input class="form-control" type="text" placeholder="Card Number" id="cardNumber" name="cardNumber"></div>
+                                <div class="form-group">
+                                    <label for="card-number">Card Number</label>
+                                    <input class="form-control {{$errors->any() ? ($errors->has('cardNumber') ? 'is-invalid' : 'is-valid') : ''}}" type="text" placeholder="Card Number" id="cardNumber" name="cardNumber" value="{{old('cardNumber')}}">
+                                    @error('cardNumber')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-4">
-                                <div class="form-group"><label for="cvc">CVC</label><input class="form-control" type="text" id="cvc" placeholder="CVC" name="cvc"></div>
+                                <div class="form-group">
+                                    <label for="cvc">CVC</label>
+                                    <input class="form-control {{$errors->any() ? ($errors->has('cvc') ? 'is-invalid' : 'is-valid') : ''}}" type="text" id="cvc" placeholder="CVC" name="cvc" value="{{old('cvc')}}">
+                                    @error('cvc')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Next Step</button></div>

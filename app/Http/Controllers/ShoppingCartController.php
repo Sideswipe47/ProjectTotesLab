@@ -67,10 +67,14 @@ class ShoppingCartController extends Controller
     public function postPage3(Request $request) {
 
         $request->validate([
-            'cardHolder' => ['required', 'min:1'],
-            'expiredMonth' => ['required', 'date', 'date_format("m")'],
-            'expiredYear' => ['required', 'date', 'date_format("y")']
+            'cardHolder' => ['required', 'alpha', 'min:1'],
+            'expiredMonth' => ['required', 'date_format:m'],
+            'expiredYear' => ['required', 'date_format:y'],
+            'cardNumber' => ['required', 'numeric', 'digits:16'],
+            'cvc' => ['required', 'numeric', 'digits:3']
         ]);
+
+        return redirect()->route('cart/page/4');
 
     }
 
