@@ -1,5 +1,6 @@
 <?php
 
+use App\Promotion;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class UserPromotionSeeder extends Seeder
     {
         
         $users = User::all();
-        $promotions = [];
+        $promotions = Promotion::all();
         $user_promotion_data = [];
 
         foreach ($users as $user) {

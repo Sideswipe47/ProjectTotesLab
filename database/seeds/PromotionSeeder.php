@@ -13,9 +13,6 @@ class PromotionSeeder extends Seeder
      */
     public function run()
     {
-
-        // Faker
-        $faker = Faker\Factory::create();
         
         $promotion_data = [];
         $promotion_max = 5;

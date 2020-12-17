@@ -1,9 +1,10 @@
 <?php
 
 use App\DeliveryService;
+use App\Promotion;
 use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class TransactionSeeder extends Seeder
 {
@@ -15,18 +16,33 @@ class TransactionSeeder extends Seeder
     public function run()
     {
         
+        // Faker
+        $faker = Faker\Factory::create();
+
         $users = User::all();
+        $promotions = Promotion::all();
         $delivery_services = DeliveryService::all();
         $transaction_data = [];
-        $max_transaction = 5;
+        $max_transaction = 10;
 
         foreach ($users as $user) {
             if ($user->role == 'member') {
                 $count = 1;
                 for ($i = 0; $i < rand(1, $max_transaction); ++$i) {
+                    $delivery_service = $delivery_services[rand(0, count($delivery_services) - 1)];
+                    $delivery_option = $delivery_service->deliveryOptions[rand(0, count($delivery_service->deliveryOptions) - 1)];
+                    $promotion = null;
+                    if (rand(0, 1) == 1) {
+                        $promotion = $promotions[rand(0, count($promotions) - 1)]->id;
+                    }
                     $transaction_data[] = [
                         'user_id' => $user->id,
-                        'card_number' => Str::random(16),
+                        'delivery_service_id' => $delivery_service->id,
+                        'delivery_option_id' => $delivery_option->id,
+                        'promotion_id' => $promotion,
+                        'card_number' => $faker->creditCardNumber(),
+                        'address' => $faker->address,
+                        'note' => $faker->sentences(rand(1, 3), true)
                     ];
                     $count += 1;
                     if ($count >= $max_transaction) {
@@ -35,6 +51,8 @@ class TransactionSeeder extends Seeder
                 }
             }
         }
+
+        DB::table('transactions')->insert($transaction_data);
 
     }
 }
