@@ -63,7 +63,7 @@ class ShoppingCartController extends Controller
         $cartItem->quantity = $request->quantity;
         $cartItem->save();
 
-        return redirect()->route('cart/page/1')->with([$request->id => 'Quantity has been updated']);
+        return redirect()->route('cart/page/1')->with(['success' . $request->id => 'Quantity has been updated']);
 
     }
 

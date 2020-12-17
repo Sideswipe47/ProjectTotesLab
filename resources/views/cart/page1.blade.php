@@ -37,7 +37,7 @@
                                             @error($item->id)
                                                 <p class="text-danger"><small>{{$message}}</small></p>
                                             @enderror
-                                            @if ($message = Session::get($item->id))
+                                            @if ($message = Session::get('success' . $item->id))
                                                 <p class="text-success"><small>{{$message}}</small></p>
                                             @endif
                                         </form>
