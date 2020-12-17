@@ -28,6 +28,7 @@ class UserReviewSeeder extends Seeder
                 $user_review_data[] = [
                     'user_id' => $user->id,
                     'product_id' => $product->id,
+                    'subject' => $faker->words(rand(1, 5), true),
                     'description' => $faker->sentences(rand(2, 5), true),
                     'rating' => rand(0, 5),
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s')

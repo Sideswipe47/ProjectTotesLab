@@ -17,6 +17,7 @@ class CreateUserReviewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
+            $table->string('subject');
             $table->string('description', 1000);
             $table->integer('rating');
             $table->timestamps();
