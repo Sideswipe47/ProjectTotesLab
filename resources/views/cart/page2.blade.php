@@ -29,7 +29,7 @@
                             <option {{old('option') ? '' : 'selected'}} disabled value="">-- {{$delivery ? 'Select Option' : 'Select Carrier first'}} --</option>
                             @if ($deliveryOptions)
                                 @foreach ($deliveryOptions as $deliveryOption)
-                                    <option {{($deliveryOption->id == old('option')) ? 'selected' : ''}} value="{{$deliveryOption->id}}">{{$deliveryOption->description}} -> IDR {{number_format($deliveryOption->cost)}}</option>
+                                    <option {{($deliveryOption->id == old('option') || ($shoppingCart->deliveryOption && $deliveryOption->id == $shoppingCart->deliveryOption->id)) ? 'selected' : ''}} value="{{$deliveryOption->id}}">{{$deliveryOption->description}} -> IDR {{number_format($deliveryOption->cost)}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -39,9 +39,9 @@
                     </div>
                     <div class="form-group"><label>Promo Codes</label>
                         <select class="custom-select {{$errors->has('promo') ? 'is-invalid' : ''}}" name="promo" id="promo">
-                            <option {{old('promo') ? '' : 'selected'}} disabled value="">-- {{count($userPromotions) == 0 ? 'No available promo' : 'Select Promo'}} --</option>
+                            <option {{old('promo') ? '' : 'selected'}} disabled value="">-- {{count($userPromotions) == 0 ? 'No available promo' : 'Select Promo (Optional)'}} --</option>
                             @foreach ($userPromotions as $userPromotion)
-                                <option {{($userPromotion->id == old('promo')) ? 'selected' : ''}} value="{{$userPromotion->id}}">{{$userPromotion->promotion->name}} ({{$userPromotion->promotion->discount}}%)</option>
+                                <option {{($userPromotion->id == old('promo') || ($shoppingCart->userPromotion && $userPromotion->id == $shoppingCart->userPromotion->id)) ? 'selected' : ''}} value="{{$userPromotion->id}}">{{$userPromotion->promotion->name}} ({{$userPromotion->promotion->discount}}%)</option>
                             @endforeach
                         </select>
                         @error('promo')
@@ -50,14 +50,14 @@
                     </div>
                     <div class="form-group">
                         <label>Address<span class="text-danger">*</span></label>
-                        <input class="form-control {{$errors->any() ? ($errors->has('address') ? 'is-invalid' : 'is-valid') : ''}}" type="text" id="address" name="address" value="{{old('address')}}">
+                        <input class="form-control {{$errors->any() ? ($errors->has('address') ? 'is-invalid' : 'is-valid') : ''}}" type="text" id="address" name="address" value="{{$shoppingCart->address ? $shoppingCart->address : old('address')}}">
                         @error('address')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>Notes</label>
-                        <textarea class="form-control {{$errors->has('note') ? 'is-invalid' : ''}}" id="note" name="note">{{old('note')}}</textarea>
+                        <textarea class="form-control {{$errors->has('note') ? 'is-invalid' : ''}}" id="note" name="note">{{$shoppingCart->note ? $shoppingCart->note : old('note')}}</textarea>
                         @error('note')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror

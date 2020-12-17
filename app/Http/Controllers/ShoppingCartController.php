@@ -20,7 +20,8 @@ class ShoppingCartController extends Controller
     // Get Page 2 - Delivery Options
     public function getPage2(Request $request) {
 
-        $delivery = $request->delivery;
+        $shoppingCart = Auth::user()->shoppingCart;
+        $delivery = $shoppingCart->deliveryService ? $shoppingCart->deliveryService->id : $request->delivery;
         $deliveryServices = DeliveryService::all();
 
         if ($delivery) {
@@ -29,8 +30,8 @@ class ShoppingCartController extends Controller
             $deliveryOptions = null;
         }
         
-        $userPromotions = Auth::user()->promotions->where('status', 'used');
-        return view('cart.page2', compact('deliveryServices', 'deliveryOptions', 'userPromotions', 'delivery'));
+        $userPromotions = Auth::user()->promotions->where('status', 'not used');
+        return view('cart.page2', compact('deliveryServices', 'deliveryOptions', 'userPromotions', 'delivery', 'shoppingCart'));
     }
 
     // Post Page 2
@@ -58,7 +59,8 @@ class ShoppingCartController extends Controller
 
     // Get Page 3 - Payment Options
     public function getPage3() {
-        return view('cart.page3');
+        $shoppingCart = Auth::user()->shoppingCart;
+        return view('cart.page3', compact('shoppingCart'));
     }
 
     // Get Page 4 - Confirmation
