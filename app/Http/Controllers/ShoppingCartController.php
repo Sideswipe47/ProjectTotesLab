@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\CartItem;
-use App\DeliveryOption;
 use App\DeliveryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,22 +18,41 @@ class ShoppingCartController extends Controller
     }
 
     // Get Page 2 - Delivery Options
-    public function getPage2() {
+    public function getPage2(Request $request) {
+
+        $delivery = $request->delivery;
         $deliveryServices = DeliveryService::all();
-        $deliveryOptions = DeliveryOption::all();
-        $promotions = Auth::user()->promotions->where('status', 'not used');
-        return view('cart.page2', compact('deliveryServices', 'deliveryOptions', 'promotions'));
+
+        if ($delivery) {
+            $deliveryOptions = DeliveryService::findOrFail($delivery)->deliveryOptions;
+        } else {
+            $deliveryOptions = null;
+        }
+        
+        $userPromotions = Auth::user()->promotions->where('status', 'used');
+        return view('cart.page2', compact('deliveryServices', 'deliveryOptions', 'userPromotions', 'delivery'));
     }
 
     // Post Page 2
     public function postPage2(Request $request) {
 
         $request->validate([
-            'delivery' => ['required', 'exists:delivery_services,id'],
+            'carrier' => ['required', 'exists:delivery_services,id'],
             'option' => ['required', 'exists:delivery_options,id'],
-            'promotion' => ['required', 'exists:user_promotions,id'],
-            'address' => ['required', 'min:10']
+            'promo' => ['nullable', 'exists:user_promotions,id'],
+            'address' => ['required', 'min:10', 'max:500'],
+            'note' => ['nullable', 'min:1', 'max:1000']
         ]);
+
+        $shoppingCart = Auth::user()->shoppingCart;
+        $shoppingCart->delivery_service_id = $request->carrier;
+        $shoppingCart->delivery_option_id = $request->option;
+        $shoppingCart->promotion_id = $request->promo;
+        $shoppingCart->address = $request->address;
+        $shoppingCart->note = $request->note;
+        $shoppingCart->save();
+
+        return redirect()->route('cart/page/3');
 
     }
 

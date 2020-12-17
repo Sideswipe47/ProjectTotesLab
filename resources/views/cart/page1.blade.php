@@ -41,7 +41,7 @@
                                                 <p class="text-success"><small>{{$message}}</small></p>
                                             @endif
                                         </form>
-                                        <div class="col-6 col-md-2 price"><span>IDR {{$item->subtotal}}</span></div>
+                                        <div class="col-6 col-md-2 price"><span>IDR {{number_format($item->subtotal)}}</span></div>
                                     </div>
                                 </div>
                                 @endforeach
@@ -53,7 +53,7 @@
                                     <div class="progress-bar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">25%</div>
                                 </div>
                                 <h3>Summary</h3>
-                                <h4><span class="text">Grand Total</span><span class="price">IDR {{$shoppingCart->grandTotal}}</span></h4>
+                                <h4><span class="text">Grand Total</span><span class="price">IDR {{number_format($shoppingCart->grandTotal)}}</span></h4>
                                 <a class="btn btn-primary btn-block btn-lg" href="{{route('cart/page/2')}}">Next Step</a>
                             </div>
                         </div>

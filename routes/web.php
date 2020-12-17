@@ -75,11 +75,17 @@ Route::middleware(['auth'])->group(function () {
 
     // Shopping Cart
     Route::middleware(['role:member'])->group(function() {
+
+        Route::patch('/cart/update/{id}', 'ShoppingCartController@postUpdateItem')->name('cart/update');
+
         Route::get('/cart', 'ShoppingCartController@getPage1')->name('cart/page/1');
         Route::get('/delivery', 'ShoppingCartController@getPage2')->name('cart/page/2');
+        Route::patch('/delivery', 'ShoppingCartController@postPage2');
         Route::get('/payment', 'ShoppingCartController@getPage3')->name('cart/page/3');
+        Route::patch('/payment', 'ShoppingCartController@postPage3');
         Route::get('/confirmation', 'ShoppingCartController@getPage4')->name('cart/page/4');
-        Route::patch('/cart/update/{id}', 'ShoppingCartController@postUpdateItem')->name('cart/update');
+        Route::patch('/confirmation', 'ShoppingCartController@postPage4')->name('cart/page/4');
+        
     });
 
 });

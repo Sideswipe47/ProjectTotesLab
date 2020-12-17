@@ -13,29 +13,29 @@
             <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input class="form-control item {{$errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" value="{{old('name')}}" placeholder="Your name">
+                    <label for="name">Name<span class="text-danger">*</span></label>
+                    <input class="form-control item {{$errors->any() ? ($errors->has('name') ? 'is-invalid' : 'is-valid') : ''}}" type="text" name="name" value="{{old('name')}}" placeholder="Your name">
                     @error('name')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control item {{$errors->has('email') ? 'is-invalid' : ''}}" type="email" name="email" value="{{old('email')}}" placeholder="Your email">
+                    <label for="email">Email<span class="text-danger">*</span></label>
+                    <input class="form-control item {{$errors->any() ? ($errors->has('email') ? 'is-invalid' : 'is-valid') : ''}}" type="email" name="email" value="{{old('email')}}" placeholder="Your email">
                     @error('email')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Password<span class="text-danger">*</span></label>
                     <input class="form-control item {{$errors->has('password') ? 'is-invalid' : ''}}" type="password" name="password" placeholder="Password" >
                     @error('password')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group mb-5">
-                    <label for="password_confirmation">Confirm Password</label>
+                    <label for="password_confirmation">Confirm Password<span class="text-danger">*</span></label>
                     <input class="form-control item {{$errors->has('password_confirmation') ? 'is-invalid' : ''}}" type="password" name="password_confirmation" placeholder="Confirm password">
                     @error('password_confirmation')
                     <div class="invalid-feedback">{{$message}}</div>
