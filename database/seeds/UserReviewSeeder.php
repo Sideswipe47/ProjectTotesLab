@@ -2,6 +2,7 @@
 
 use App\Product;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,9 @@ class UserReviewSeeder extends Seeder
     public function run()
     {
         
+        // Faker
+        $faker = Faker\Factory::create();
+
         $users = User::all();
         $products = Product::all();
         $user_review_data = [];
@@ -24,7 +28,9 @@ class UserReviewSeeder extends Seeder
                 $user_review_data[] = [
                     'user_id' => $user->id,
                     'product_id' => $product->id,
-                    'rating' => rand(0, 5)
+                    'description' => $faker->sentences(rand(2, 5), true),
+                    'rating' => rand(0, 5),
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s')
                 ];
             }
         }

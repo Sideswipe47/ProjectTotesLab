@@ -70,14 +70,5 @@
 @endsection
 @section('head')
     @parent
-    <script type="text/javascript">
-
-        const url = window.location.href;
-        const fixed_url = url.substring(0, url.indexOf('?'));
-
-        function getSelectValue(selectObject) {
-            var value = selectObject.value;
-            window.location = fixed_url + '?delivery=' + value;
-        }
-    </script>
+    <script type="text/javascript" src="{{asset('assets/js/payment.js')}}"></script>
 @endsection

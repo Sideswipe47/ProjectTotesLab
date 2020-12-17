@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,8 @@ class ShoppingCartSeeder extends Seeder
         foreach ($users as $user) {
             if ($user->role == 'member') {
                 $shopping_cart_data[] = [
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s')
                 ];
             }
         }

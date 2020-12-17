@@ -63,6 +63,21 @@ class ShoppingCartController extends Controller
         return view('cart.page3', compact('shoppingCart'));
     }
 
+    // Post Page 3
+    public function postPage3(Request $request) {
+
+        $request->validate([
+            'cardHolder' => ['required', 'alpha', 'min:1'],
+            'expiredMonth' => ['required', 'date_format:m'],
+            'expiredYear' => ['required', 'date_format:y'],
+            'cardNumber' => ['required', 'numeric', 'digits:16'],
+            'cvc' => ['required', 'numeric', 'digits:3']
+        ]);
+
+        return redirect()->route('cart/page/4');
+
+    }
+
     // Get Page 4 - Confirmation
     public function getPage4() {
         return view('cart.page4');
