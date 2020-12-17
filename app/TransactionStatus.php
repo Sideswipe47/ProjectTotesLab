@@ -8,7 +8,7 @@ class TransactionStatus extends Model
 {
     
     // Fillables Property
-    protected $fillable = ['status'];
+    protected $fillable = ['transaction_id', 'status'];
 
     // Transaction Status belongs to a Transaction
     public function transaction() {

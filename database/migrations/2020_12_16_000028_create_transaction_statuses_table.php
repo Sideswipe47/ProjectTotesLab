@@ -15,8 +15,11 @@ class CreateTransactionStatusesTable extends Migration
     {
         Schema::create('transaction_statuses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('transaction_id');
             $table->string('description');
             $table->timestamps();
+
+            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

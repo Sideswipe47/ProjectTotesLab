@@ -8,7 +8,7 @@ class UserReview extends Model
 {
     
     // Fillable Property
-    protected $fillable = ['user_id', 'product_id', 'description', 'rating'];
+    protected $fillable = ['user_id', 'product_id', 'subject', 'description', 'rating'];
 
     // Review belongs to a User
     public function user() {
