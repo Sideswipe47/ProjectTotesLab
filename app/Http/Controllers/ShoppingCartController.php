@@ -11,7 +11,7 @@ class ShoppingCartController extends Controller
 
         $user = Auth::user();
         $shoppingCart = $user->shoppingCart;
-
+        // dd($shoppingCart);
         return view('cart.page1', compact('shoppingCart'));
     }
 }
