@@ -54,7 +54,7 @@
                                 </div>
                                 <h3>Summary</h3>
                                 <h4><span class="text">Grand Total</span><span class="price">IDR {{$shoppingCart->grandTotal}}</span></h4>
-                                <button class="btn btn-primary btn-block btn-lg" type="button">Next Step</button>
+                                <a class="btn btn-primary btn-block btn-lg" href="{{route('cart/page/2')}}">Next Step</a>
                             </div>
                         </div>
                     </div>

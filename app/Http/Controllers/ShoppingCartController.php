@@ -20,8 +20,8 @@ class ShoppingCartController extends Controller
 
     // Get Page 2 - Delivery Options
     public function getPage2() {
-        $delivery_services = DeliveryService::all();
-        $delivery_options = DeliveryOption::all();
+        $deliveryServices = DeliveryService::all();
+        $deliveryOptions = DeliveryOption::all();
         $promotions = Auth::user()->promotions->where('status', 'not used');
         return view('cart.page2', compact('deliveryServices', 'deliveryOptions', 'promotions'));
     }
