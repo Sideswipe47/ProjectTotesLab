@@ -8,7 +8,6 @@
                 <h2 class="text-info">Log In</h2>
                 <p>Enter your e-mail and password to log in to the site. </p>
             </div>
-            
             <form action="{{route('login')}}" method="POST">
                 @csrf
                 <div class="form-group"><label for="email">Email</label>
@@ -26,7 +25,6 @@
                 @endif
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
             </form>
-
             <div class="block-heading">
                 <p>Don't have an account yet?</p>
                 <p><a href="{{route('register')}}">register now</a></p>

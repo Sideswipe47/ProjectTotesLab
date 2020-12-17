@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\CartItem;
 use App\DeliveryOption;
 use App\DeliveryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ShoppingCartController extends Controller
 {
@@ -44,6 +46,25 @@ class ShoppingCartController extends Controller
     // Get Page 4 - Confirmation
     public function getPage4() {
         return view('cart.page4');
+    }
+
+    // Post for Updating Cart Item
+    public function postUpdateItem(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'quantity' => ['required', 'gt:0']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('cart/page/1')->withErrors([$request->id => $validator->errors()->first('quantity')]);
+        }
+
+        $cartItem = CartItem::findOrFail($request->id);
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+
+        return redirect()->route('cart/page/1')->with([$request->id => 'Quantity has been updated']);
+
     }
 
 }

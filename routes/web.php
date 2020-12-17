@@ -38,7 +38,7 @@ Route::middleware(['guest'])->group(function () {
 // Authenticated
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/logout', 'AuthController@logout')->name('logout');
+    Route::post('/logout', 'AuthController@postLogout')->name('logout');
 
     // Admin
     Route::middleware(['role:admin'])->group(function() {
@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     // Shopping Cart
     Route::middleware(['role:member'])->group(function() {
         Route::get('/cart/1', 'ShoppingCartController@getPage1')->name('cart/page/1');
+        Route::patch('/cart/update/{id}', 'ShoppingCartController@postUpdateItem')->name('cart/update');
     });
 
 });
