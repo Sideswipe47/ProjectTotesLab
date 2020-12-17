@@ -9,37 +9,38 @@
                 <br><br>
                 <h2 class="text-info">Registration</h2>
                 <p>To register, please enter your personal information below.</p>
-
-                @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $e)
-                        <li>{{$e}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
             </div>
             <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input class="form-control item" type="text" name="name" value="{{old('name')}}" placeholder="Your name">
+                    <input class="form-control item {{$errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" value="{{old('name')}}" placeholder="Your name">
+                    @error('name')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
-
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-control item" type="email" name="email" value="{{old('email')}}" placeholder="Your email">
+                    <input class="form-control item {{$errors->has('email') ? 'is-invalid' : ''}}" type="email" name="email" value="{{old('email')}}" placeholder="Your email">
+                    @error('email')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control item" type="password" name="password" placeholder="Password" >
+                    <input class="form-control item {{$errors->has('password') ? 'is-invalid' : ''}}" type="password" name="password" placeholder="Password" >
+                    @error('password')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
-                <div class="form-group">
-                    <label for="password">Confirm Password</label>
-                    <input class="form-control item" type="password" name="password_confirmation" placeholder="Confirm password"></div>
+                <div class="form-group mb-5">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input class="form-control item {{$errors->has('password_confirmation') ? 'is-invalid' : ''}}" type="password" name="password_confirmation" placeholder="Confirm password">
+                    @error('password_confirmation')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
                 <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
             </form>
 

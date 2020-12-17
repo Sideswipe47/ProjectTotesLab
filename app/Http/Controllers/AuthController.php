@@ -8,24 +8,48 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    //
+    
+    // Get Register Page
+    public function getRegister(){
+        return view('auth.register');
+    }
+
+    // Post for Registering User
+    public function postRegister(Request $request) {
+        
+        $request->validate([
+            'name' => ['required', 'min:3', 'alpha'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:8', 'alpha_num'],
+            'password_confirmation' => ['required', 'same:password']
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->route('login');
+
+    }
+
+    // Get Login Page
     public function getLogin(){
         return view('auth.login');
     }
 
+    // Post for Login to Web
     public function postLogin(Request $request){
+
         $credential = $request->only('email', 'password');
         $remember_me = ($request->remember_me == "on");
-
         $remember_me_token_expire_time = 720;
 
         if(Auth::attempt($credential, $remember_me)){
             if($remember_me){
-                //get the randomly generated cookie by laravel
                 $remember_me_tokenName = Auth::getRecallerName();
-                //get cookie jar
                 $cookieJar = Auth::guard()->getCookieJar();
-                //get cookie value 
                 $cookieVal = $cookieJar->queued($remember_me_tokenName)->getValue();
                 $cookieJar->queue($remember_me_tokenName, $cookieVal, $remember_me_token_expire_time);
             }
@@ -35,30 +59,10 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(){
+    // Post for Logging Out
+    public function postLogout(){
         Auth::logout();
         return redirect()->route('login');
     }
 
-    public function getRegister(){
-        return view('auth.register');
-    }
-
-    public function postRegister(Request $request){
-        //validation
-        $request->validate([
-            'name' => ['required', 'min:3', 'alpha'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:8', 'alpha_num', 'confirmed']
-        ]);
-
-        //store
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
-
-        return redirect()->route('login');
-    }
 }

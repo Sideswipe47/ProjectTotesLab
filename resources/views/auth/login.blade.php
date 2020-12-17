@@ -8,16 +8,6 @@
                 <h2 class="text-info">Log In</h2>
                 <p>Enter your e-mail and password to log in to the site. </p>
             </div>
-
-            @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $e)
-                    <li>{{$e}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
             
             <form action="{{route('login')}}" method="POST">
                 @csrf
@@ -29,7 +19,11 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember_me"><label class="form-check-label" for="checkbox">Remember me</label></div>
                 </div>
-
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    Invalid email or password. Please check again.
+                </div>
+                @endif
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
             </form>
 
