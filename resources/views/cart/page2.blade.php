@@ -29,7 +29,7 @@
                             <option {{old('option') ? '' : 'selected'}} disabled value="">-- {{$delivery ? 'Select Option' : 'Select Carrier first'}} --</option>
                             @if ($deliveryOptions)
                                 @foreach ($deliveryOptions as $deliveryOption)
-                                    <option {{($deliveryOption->id == old('option')) ? 'selected' : ''}} value="{{$deliveryOption->id}}">{{$deliveryOption->description}}</option>
+                                    <option {{($deliveryOption->id == old('option')) ? 'selected' : ''}} value="{{$deliveryOption->id}}">{{$deliveryOption->description}} -> IDR {{number_format($deliveryOption->cost)}}</option>
                                 @endforeach
                             @endif
                         </select>
