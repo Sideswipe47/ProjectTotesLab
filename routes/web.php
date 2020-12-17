@@ -85,6 +85,8 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/payment', 'ShoppingCartController@postPage3');
         Route::get('/confirmation', 'ShoppingCartController@getPage4')->name('cart/page/4');
         Route::patch('/confirmation', 'ShoppingCartController@postPage4')->name('cart/page/4');
+        Route::get('/transaction', 'TransactionController@getAll')->name('transaction');
+        Route::get('/product/detail/id={id}', 'ProductController@viewDetail');
         
     });
 
