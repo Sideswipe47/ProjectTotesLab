@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CartItem;
 use App\DeliveryService;
-use App\Product;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -68,12 +68,27 @@ class ShoppingCartController extends Controller
     public function postPage3(Request $request) {
 
         $request->validate([
-            'cardHolder' => ['required', 'alpha', 'min:1'],
+            'cardHolder' => ['required', 'min:1'],
             'expiredMonth' => ['required', 'date_format:m'],
             'expiredYear' => ['required', 'date_format:y'],
             'cardNumber' => ['required', 'numeric', 'digits:16'],
             'cvc' => ['required', 'numeric', 'digits:3']
         ]);
+
+        $user = Auth::user();
+        $shoppingCart = $user->shoppingCart;
+        $transaction = Transaction::create([
+            'user_id' => $user->id,
+            'delivery_service_id' => $shoppingCart->deliveryService->id,
+            'delivery_option_id' => $shoppingCart->deliveryOption->id,
+            'promotion_id' => $shoppingCart->userPromotion->id,
+            'card_number' => $request->cardNumber,
+            'address' => $shoppingCart->address,
+        ]);
+
+        foreach ($shoppingCart->cartItems as $cartItem) {
+
+        }
 
         return redirect()->route('cart/page/4');
 
@@ -88,7 +103,7 @@ class ShoppingCartController extends Controller
     public function postUpdateItem(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'quantity' => ['required', 'gt:0']
+            'quantity' => ['required', 'integer', 'gt:0']
         ]);
 
         if ($validator->fails()) {
