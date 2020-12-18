@@ -135,4 +135,18 @@ class ShoppingCartController extends Controller
 
     }
 
+
+    public function postAdd(Request $request){
+        $p = Product::find($request->id);
+        //validate
+        $request->validate([
+            'quantity' => ['gt:0', 'required', 'integer']
+        ]);
+
+        $ci = new CartItem;
+        $ci->shopping_cart_id = Auth::user()->shoppingCart->id;
+        $ci->product_id = $p->id;
+        $ci->quantity = $request->quantity;
+
+    }
 }

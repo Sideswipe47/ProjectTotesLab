@@ -89,6 +89,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/transaction', 'TransactionController@getAll')->name('transaction');
         Route::get('/track/{id}', 'TransactionController@getTrack')->name('track');
+        Route::post('/cart/add/{id}', 'ShoppingCartController@postAdd')->name('cartAdd');
         
     });
 
