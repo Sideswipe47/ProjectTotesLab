@@ -15,7 +15,7 @@
                             <div class="col-lg-7">
                                 <h3>Lorem Ipsum dolor sit amet</h3>
                                 <div class="info"><span class="text-muted">{{$t->created_at}}&nbsp;</span></div>
-                                <p>Status: Delivering</p>
+                                <p>Status: {{$t->transactionStatuses->sortBy('created_at')->last()->description}}</p>
                                 <p>Content:</p>
                                 <ol>
                                     @foreach($t->transactionDetails as $td)
@@ -24,7 +24,7 @@
                                         </li>
                                     @endforeach
                                 </ol>
-                                <p>Total Price: IDR <i>WIP</i> </p>
+                                <p>Total Price: IDR <i>{{number_format($t->grandTotal)}}</i> </p>
                                 <button class="btn btn-outline-primary btn-sm" type="button">Track Order</button>
 
                             </div>

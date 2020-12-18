@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CartItem;
 use App\DeliveryService;
 use App\Transaction;
+use App\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -84,11 +85,27 @@ class ShoppingCartController extends Controller
             'promotion_id' => $shoppingCart->userPromotion->id,
             'card_number' => $request->cardNumber,
             'address' => $shoppingCart->address,
+            'note' => $shoppingCart->note
         ]);
 
         foreach ($shoppingCart->cartItems as $cartItem) {
-
+            TransactionDetail::create([
+                'transaction_id' => $transaction->id,
+                'product_id' => $cartItem->product->id,
+                'quantity' => $cartItem->quantity,
+                'price' => $cartItem->product->price
+            ]);
+            $cartItem->delete();
         }
+
+        $shoppingCart->fill([
+            'delivery_service_id' => null,
+            'delivery_option_id' => null,
+            'promotion_id' => null,
+            'card_number' => null,
+            'address' => null,
+            'note' => null,
+        ])->save();
 
         return redirect()->route('cart/page/4');
 
