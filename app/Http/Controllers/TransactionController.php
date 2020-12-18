@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,4 +13,10 @@ class TransactionController extends Controller
         $transactions = $user->transactions;
         return view('transaction.index', compact('transactions'));
     }
+
+    public function getTrack(Request $request) {
+        $transaction = Transaction::findOrFail($request->id);
+        return view('transaction.track', compact('transaction'));
+    }
+
 }

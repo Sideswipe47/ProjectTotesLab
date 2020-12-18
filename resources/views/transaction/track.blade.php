@@ -10,14 +10,12 @@
                 <form>
                     <div class="products">
                         <h3 class="title">Delivery Timeline</h3>
-                        <div class="item"><span class="price">14:33</span>
-                            <p class="item-name">17 October 2020</p>
-                            <p class="item-description">Waiting for payment confirmation</p>
+                        @foreach ($transaction->transactionStatuses as $transactionStatus)
+                        <div class="item"><span class="price">{{ \Carbon\Carbon::parse($transactionStatus->created_at)->setTimezone('Asia/Jakarta')->format('H:i')}}</span>
+                            <p class="item-name">{{ \Carbon\Carbon::parse($transactionStatus->created_at)->setTimezone('Asia/Jakarta')->format('l, j F Y')}}</p>
+                            <p class="item-description">{{$transactionStatus->description}}</p>
                         </div>
-                        <div class="item"><span class="price">16:20</span>
-                            <p class="item-name">17 October 2020</p>
-                            <p class="item-description">Payment accepted and order processed</p>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="card-details">
                         <div class="form-row">

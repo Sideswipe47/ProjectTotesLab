@@ -25,7 +25,7 @@
                                     @endforeach
                                 </ol>
                                 <p>Total Price: IDR <i>{{number_format($t->grandTotal)}}</i> </p>
-                                <button class="btn btn-outline-primary btn-sm" type="button">Track Order</button>
+                                <a class="btn btn-outline-primary btn-sm" href="{{route('track', $t->id)}}">Track Order</a>
 
                             </div>
                         </div>

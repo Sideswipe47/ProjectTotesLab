@@ -20,7 +20,7 @@ class TransactionStatusSeeder extends Seeder
 
         foreach ($transactions as $transaction) {
 
-            if (rand(0, 1) == 1) {
+            if (true) {
                 $transaction_status_data[] = [
                     'transaction_id' => $transaction->id,
                     'description' => 'Waiting for Payment Confirmation',
