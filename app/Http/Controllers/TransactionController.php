@@ -10,7 +10,6 @@ class TransactionController extends Controller
     public function  getAll(){
         $user = Auth::user();
         $transactions = $user->transactions;
-        // dd($transactions);
         return view('transaction.index', compact('transactions'));
     }
 }
