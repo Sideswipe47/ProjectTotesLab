@@ -24,7 +24,9 @@
                                         </li>
                                     @endforeach
                                 </ol>
-                                <p>Total Price: IDR <i>WIP</i> </p><button class="btn btn-outline-primary btn-sm" type="button">Track Order</button><button class="btn btn-outline-primary btn-sm text-left" type="button" style="text-align: left;margin-left: 100px;">Buy Again</button>
+                                <p>Total Price: IDR <i>WIP</i> </p>
+                                <button class="btn btn-outline-primary btn-sm" type="button">Track Order</button>
+
                             </div>
                         </div>
                     </div>
