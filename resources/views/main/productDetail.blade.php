@@ -29,7 +29,16 @@
                                 </div>
                                 <div class="price">
                                     <h3>IDR {{$product->price}}</h3>
-                                </div><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
+                                </div>
+                                <form action="{{route('cartAdd', $product->id)}}" method="POST" class="form-group">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="number" id="quantity" name="quantity" class="form-control quantity-input">
+                                        <span class="input-group-append">
+                                            <button class="btn btn-primary">Add to cart</button>
+                                        </span>
+                                    </div>
+                                </form>
 
                             </div>
                         </div>
@@ -91,12 +100,12 @@
                                         <div class="rating">
                                             @for ($i = 0; $i < ceil($r->rating); ++$i)
                                                 <img src="{{asset('assets/img/star.svg')}}">
-                                            @endfor
-                                            @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
-                                                <img src="{{asset('assets/img/star-empty.svg')}}">
-                                            @endfor
+                                                @endfor
+                                                @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
+                                                    <img src="{{asset('assets/img/star-empty.svg')}}">
+                                                    @endfor
                                         </div>
-                                        <h4>Incredible product</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{$r->created_at}}</span>
+                                        <h4>{{$r->subject}}</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{$r->created_at}}</span>
                                         <p>{{$r->description}}</p>
                                     </div>
                                 </div>
