@@ -45,6 +45,6 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        return redirect()->back()->with(['success' => $product->name . ' has been inserted']);
+        return redirect()->route('product/create')->with(['success' => $product->name . ' has been inserted']);
     }
 }
