@@ -102,10 +102,10 @@
                                             <div class="rating">
                                                 @for ($i = 0; $i < ceil($r->rating); ++$i)
                                                     <img src="{{asset('assets/img/star.svg')}}">
-                                                    @endfor
-                                                    @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
-                                                        <img src="{{asset('assets/img/star-empty.svg')}}">
-                                                        @endfor
+                                                @endfor
+                                                @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
+                                                    <img src="{{asset('assets/img/star-empty.svg')}}">
+                                                @endfor
                                             </div>
                                             <h4>{{$r->subject}}</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('j F Y')}} at {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('H:i:s T')}}</span>
                                             <p>{{$r->description}}</p>
@@ -122,33 +122,29 @@
                     <h3>Related Products</h3>
                     <div class="items">
                         <div class="row justify-content-center">
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="clean-related-item">
-                                    <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2018/09/tote-bag-geometry-depan.jpg"></a></div>
-                                    <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                        <div class="rating"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star-half-empty.svg"><img src="assets/img/star-empty.svg"></div>
-                                        <h4>$300</h4>
+                            @foreach ($relateds as $product)
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="clean-related-item h-100">
+                                        <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="{{$product->image ? asset('storage/img/' . $product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></a></div>
+                                        <div class="related-name">
+                                            <a href="{{route('product/view', $product->id)}}">{{$product->name}}</a>
+                                            @if ($product->rating)
+                                                <div class="rating">
+                                                    @for ($i = 0; $i < ceil($product->rating); ++$i)
+                                                        <img src="{{asset('assets/img/star.svg')}}">
+                                                    @endfor
+                                                    @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
+                                                        <img src="{{asset('assets/img/star-empty.svg')}}">
+                                                    @endfor
+                                                </div>
+                                            @else
+                                                <p class="mb-0 text-muted">No rating</p>
+                                            @endif
+                                            <h4>IDR {{$product->price}}</h4>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="clean-related-item">
-                                    <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="https://cf.shopee.co.id/file/fb967106110fc00e894b6944e7361e30"></a></div>
-                                    <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                        <div class="rating"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star-half-empty.svg"><img src="assets/img/star-empty.svg"></div>
-                                        <h4>$300</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="clean-related-item">
-                                    <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a></div>
-                                    <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                        <div class="rating"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star.svg"><img src="assets/img/star-half-empty.svg"><img src="assets/img/star-empty.svg"></div>
-                                        <h4>$300</h4>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

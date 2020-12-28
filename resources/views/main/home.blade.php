@@ -88,6 +88,16 @@
                                                     <h3>IDR {{$product->price}}</h3>
                                                 </div>
                                             </div>
+                                            @if (Auth::check() && Auth::user()->role == "admin")
+                                            <div class="w-100 text-center mt-4">
+                                                <a class="btn btn-primary" href="{{route('product/update', $product->id)}}">Update</a>
+                                                <form action="{{route('product/delete', $product->id)}}" method="POST" class="d-inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                     @endforeach
@@ -100,4 +110,7 @@
             </div>
         </section>
     </main>
+    @if ($message = Session::get('success'))
+        @include('components.modal', ['title' => 'Success', 'message' => $message])
+    @endif
 @endsection

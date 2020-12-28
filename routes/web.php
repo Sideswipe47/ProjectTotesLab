@@ -46,23 +46,23 @@ Route::middleware(['auth'])->group(function () {
         // Product
         Route::get('/product/create', 'ProductController@getCreate')->name('product/create');
         Route::post('/product/create', 'ProductController@postCreate');
-        Route::get('/product/update', 'ProductController@getUpdate')->name('product/update');
-        Route::patch('/product/update', 'ProductController@postUpdate');
-        Route::delete('/product/delete', 'ProductController@postDelete')->name('product/delete');
+        Route::get('/product/update/{id}', 'ProductController@getUpdate')->name('product/update');
+        Route::patch('/product/update/{id}', 'ProductController@postUpdate');
+        Route::delete('/product/delete/{id}', 'ProductController@postDelete')->name('product/delete');
 
         // Promotion
         Route::get('/promotion/create', 'PromotionController@getCreate')->name('promotion/create');
         Route::post('/promotion/create', 'PromotionController@postCreate');
-        Route::get('/promotion/update', 'PromotionController@getUpdate')->name('promotion/update');
-        Route::patch('/promotion/update', 'PromotionController@postUpdate');
-        Route::delete('/promotion/delete', 'PromotionController@postDelete')->name('promotion/delete');
+        Route::get('/promotion/update/{id}', 'PromotionController@getUpdate')->name('promotion/update');
+        Route::patch('/promotion/update/{id}', 'PromotionController@postUpdate');
+        Route::delete('/promotion/delete/{id}', 'PromotionController@postDelete')->name('promotion/delete');
 
         // Delivery Service
         Route::get('/service/create', 'DeliveryServiceController@getCreate')->name('delivery_service/create');
         Route::post('/service/create', 'DeliveryServiceController@postCreate');
-        Route::get('/service/update', 'DeliveryServiceController@getUpdate')->name('delivery_service/update');
-        Route::patch('/service/update', 'DeliveryServiceController@postUpdate');
-        Route::delete('/service/delete', 'DeliveryServiceController@postDelete')->name('delivery_service/delete');
+        Route::get('/service/update/{id}', 'DeliveryServiceController@getUpdate')->name('delivery_service/update');
+        Route::patch('/service/update/{id}', 'DeliveryServiceController@postUpdate');
+        Route::delete('/service/delete/{id}', 'DeliveryServiceController@postDelete')->name('delivery_service/delete');
 
     });
 
