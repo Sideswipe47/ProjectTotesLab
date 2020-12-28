@@ -96,22 +96,24 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade show" role="tabpanel" id="reviews">
-                                @foreach($reviews as $r)
-                                <div class="reviews">
-                                    <div class="review-item">
-                                        <div class="rating">
-                                            @for ($i = 0; $i < ceil($r->rating); ++$i)
-                                                <img src="{{asset('assets/img/star.svg')}}">
-                                                @endfor
-                                                @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
-                                                    <img src="{{asset('assets/img/star-empty.svg')}}">
+                                @forelse($reviews as $r)
+                                    <div class="reviews">
+                                        <div class="review-item">
+                                            <div class="rating">
+                                                @for ($i = 0; $i < ceil($r->rating); ++$i)
+                                                    <img src="{{asset('assets/img/star.svg')}}">
                                                     @endfor
+                                                    @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
+                                                        <img src="{{asset('assets/img/star-empty.svg')}}">
+                                                        @endfor
+                                            </div>
+                                            <h4>{{$r->subject}}</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('j F Y')}} at {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('H:i:s T')}}</span>
+                                            <p>{{$r->description}}</p>
                                         </div>
-                                        <h4>{{$r->subject}}</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{$r->created_at}}</span>
-                                        <p>{{$r->description}}</p>
                                     </div>
-                                </div>
-                                @endforeach
+                                @empty
+                                    <p class="description">This product has no review yet</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
