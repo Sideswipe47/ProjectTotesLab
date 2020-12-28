@@ -19,14 +19,18 @@
                         <div class="col-md-6">
                             <div class="info">
                                 <h3>{{$product->name}}</h3>
-                                <div class="rating">
-                                    @for ($i = 0; $i < ceil($product->rating); ++$i)
-                                        <img src="{{asset('assets/img/star.svg')}}">
+                                @if ($product->rating)
+                                    <div class="rating">
+                                        @for ($i = 0; $i < ceil($product->rating); ++$i)
+                                            <img src="{{asset('assets/img/star.svg')}}">
                                         @endfor
                                         @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
                                             <img src="{{asset('assets/img/star-empty.svg')}}">
-                                            @endfor
-                                </div>
+                                        @endfor
+                                    </div>
+                                @else
+                                    <p class="mb-0 text-muted">No rating</p>
+                                @endif
                                 <div class="price">
                                     <h3>IDR {{$product->price}}</h3>
                                 </div>
@@ -75,7 +79,7 @@
                             </div>
                             <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
                                 <div class="table-responsive table-bordered">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered mb-0">
                                         <tbody>
                                             <tr>
                                                 <td class="stat">Material</td>

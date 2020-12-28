@@ -72,14 +72,18 @@
                                             <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a></div>
                                             <div class="product-name"><a href="{{route('product/view', $product->id)}}">{{$product->name}}</a></div>
                                             <div class="about">
-                                                <div class="rating">
-                                                    @for ($i = 0; $i < ceil($product->rating); ++$i)
-                                                        <img src="{{asset('assets/img/star.svg')}}">
-                                                    @endfor
-                                                    @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
-                                                        <img src="{{asset('assets/img/star-empty.svg')}}">
-                                                    @endfor
-                                                </div>
+                                                @if ($product->rating)
+                                                    <div class="rating">
+                                                        @for ($i = 0; $i < ceil($product->rating); ++$i)
+                                                            <img src="{{asset('assets/img/star.svg')}}">
+                                                        @endfor
+                                                        @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
+                                                            <img src="{{asset('assets/img/star-empty.svg')}}">
+                                                        @endfor
+                                                    </div>
+                                                @else
+                                                    <p class="mb-0 text-muted">No rating</p>
+                                                @endif
                                                 <div class="price">
                                                     <h3>IDR {{$product->price}}</h3>
                                                 </div>

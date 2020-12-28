@@ -25,6 +25,7 @@ class UserReviewSeeder extends Seeder
 
         foreach ($users as $user) {
             foreach ($products as $product) {
+                if (rand(0, 1) == 1)
                 $user_review_data[] = [
                     'user_id' => $user->id,
                     'product_id' => $product->id,
