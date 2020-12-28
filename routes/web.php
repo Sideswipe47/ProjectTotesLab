@@ -50,13 +50,6 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/product/update', 'ProductController@postUpdate');
         Route::delete('/product/delete', 'ProductController@postDelete')->name('product/delete');
 
-        // Product Type
-        Route::get('/type/create', 'ProductTypeController@getCreate')->name('product_type/create');
-        Route::post('/type/create', 'ProductTypeController@postCreate');
-        Route::get('/type/update', 'ProductTypeController@getUpdate')->name('product_type/update');
-        Route::patch('/type/update', 'ProductTypeController@postUpdate');
-        Route::delete('/type/delete', 'ProductTypeController@postDelete')->name('product_type/delete');
-
         // Promotion
         Route::get('/promotion/create', 'PromotionController@getCreate')->name('promotion/create');
         Route::post('/promotion/create', 'PromotionController@postCreate');

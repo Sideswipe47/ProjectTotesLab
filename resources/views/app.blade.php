@@ -19,25 +19,29 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    @if(Auth::check() && Auth::user()->role == 'member')
-                    <li class="nav-item"><a class="nav-link" href="{{route('cart/page/1')}}">Shopping Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('transaction')}}">Transaction History</a></li>
-                    @endif
-
-                    <!-- <li class="nav-item"><a class="nav-link" href="catalog-page.html">Catalog</a></li> -->
-                    
                     @guest
-                    <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Register</a></li>
                     @endguest
 
                     @auth
-                    <li class="nav-item">
-                        <form action="{{route('logout')}}" method="POST">
-                            @csrf
-                            <button class="nav-link btn btn-link">Logout</button>
-                        </form>
-                    </li>
+                    
+                        @if(Auth::user()->role == 'member')
+                            <li class="nav-item"><a class="nav-link" href="{{route('cart/page/1')}}">Shopping Cart</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('transaction')}}">Transaction History</a></li>
+                        @endif
+
+                        @if(Auth::user()->role == 'admin')
+                            <li class="nav-item"><a class="nav-link" href="{{route('product/create')}}">Add Product</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('cart/page/1')}}">View Transactions</a></li>
+                        @endif
+
+                        <li class="nav-item">
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                <button class="nav-link btn btn-link">Logout</button>
+                            </form>
+                        </li>
                     @endauth
                 </ul>
             </div>
