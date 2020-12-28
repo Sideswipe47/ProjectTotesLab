@@ -22,7 +22,6 @@
                     @if(Auth::check() && Auth::user()->role == 'member')
                     <li class="nav-item"><a class="nav-link" href="{{route('cart/page/1')}}">Shopping Cart</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('transaction')}}">Transaction History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pricing.html">Tracking</a></li>
                     @endif
 
                     <!-- <li class="nav-item"><a class="nav-link" href="catalog-page.html">Catalog</a></li> -->

@@ -32,10 +32,10 @@
                                 </div>
                                 <form action="{{route('cartAdd', $product->id)}}" method="POST" class="form-group">
                                     @csrf
-                                    <div class="input-group">
+                                    <div class="input-group mt-5">
                                         <input type="number" id="quantity" name="quantity" class="form-control quantity-input">
                                         <span class="input-group-append">
-                                            <button class="btn btn-primary">Add to cart</button>
+                                            <button class="btn btn-primary mb-0 py-0">Add to cart</button>
                                         </span>
                                     </div>
                                 </form>

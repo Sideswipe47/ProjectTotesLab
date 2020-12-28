@@ -11,6 +11,6 @@ class ProductController extends Controller
     public function getProduct(Request $request){
         $product = Product::find($request->id);
         $reviews = $product->reviews;
-        return view('main.productDetail', compact('product', 'reviews'));
+        return view('product.index', compact('product', 'reviews'));
     }
 }
