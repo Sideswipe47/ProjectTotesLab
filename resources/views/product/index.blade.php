@@ -12,16 +12,16 @@
                 <div class="product-info">
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
-                            @if ($product->images)
-                            <div class="gallery">
-                                <div class="sp-wrap">
-                                    @foreach ($product->images as $image)
-                                        <a href="{{$image->path}}">
-                                            <img class="img-fluid d-block mx-auto" src="{{$image->path}}">
-                                        </a>
-                                    @endforeach
+                            @if (count($product->images) != 0)
+                                <div class="gallery">
+                                    <div class="sp-wrap">
+                                        @foreach ($product->images as $image)
+                                            <a href="{{asset('storage/img/' . $image->path)}}">
+                                                <img class="img-fluid d-block mx-auto" src="{{asset('storage/img/' . $image->path)}}">
+                                            </a>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
                             @else
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png" alt="No image" class="mw-100">
                             @endif
@@ -67,25 +67,13 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane active fade show description" role="tabpanel" id="description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <figure class="figure"><img class="img-fluid figure-img" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></figure>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <h4>Lorem Ipsum</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-7 right">
-                                        <h4>Lorem Ipsum</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <figure class="figure"><img class="img-fluid figure-img" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></figure>
-                                    </div>
-                                </div>
+                                @if ($product->description)
+                                    @foreach (preg_split('/\r\n|\r|\n/', $product->description) as $paragraph)
+                                        <p>{{$paragraph}}</p>
+                                    @endforeach
+                                @else
+                                    <p>No description</p>
+                                @endif
                             </div>
                             <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
                                 <div class="table-responsive table-bordered">

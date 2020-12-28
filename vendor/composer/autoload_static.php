@@ -3567,6 +3567,7 @@ class ComposerStaticInitcb468bf6054138eebdb9594f450b48e2
         'PhpParser\\Parser\\Tokens' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+        'ProductImageSeeder' => __DIR__ . '/../..' . '/database/seeds/ProductImageSeeder.php',
         'ProductSeeder' => __DIR__ . '/../..' . '/database/seeds/ProductSeeder.php',
         'PromotionSeeder' => __DIR__ . '/../..' . '/database/seeds/PromotionSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',

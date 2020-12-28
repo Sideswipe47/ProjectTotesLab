@@ -3093,6 +3093,7 @@ return array(
     'PhpParser\\Parser\\Tokens' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
     'PhpParser\\PrettyPrinterAbstract' => $vendorDir . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
     'PhpParser\\PrettyPrinter\\Standard' => $vendorDir . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+    'ProductImageSeeder' => $baseDir . '/database/seeds/ProductImageSeeder.php',
     'ProductSeeder' => $baseDir . '/database/seeds/ProductSeeder.php',
     'PromotionSeeder' => $baseDir . '/database/seeds/PromotionSeeder.php',
     'Prophecy\\Argument' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Argument.php',

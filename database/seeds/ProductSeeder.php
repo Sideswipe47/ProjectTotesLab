@@ -32,7 +32,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $categories[rand(0, count($categories) - 1)]->id,
                 'material_id' => $materials[rand(0, count($materials) - 1)]->id,
                 'size_id' => $sizes[rand(0, count($sizes) - 1)]->id,
-                'name' => ucwords($faker->words(rand(1, 3), true)),
+                'name' => ucwords($faker->unique()->words(rand(1, 3), true)),
+                'description' => rand(0, 1) == 1 ? $faker->paragraphs(rand(1, 5), true) : null,
                 'price' => 1000 * rand(20, 50),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ];
