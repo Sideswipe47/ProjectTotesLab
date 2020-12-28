@@ -36,4 +36,14 @@ class Product extends Model
         return $review->avg('rating');
     }
 
+    // Product has many images
+    public function images() {
+        return $this->hasMany(ProductImage::class);
+    }
+
+    // Get First Image
+    public function image() {
+        return $this->hasOne(ProductImage::class);
+    }
+
 }

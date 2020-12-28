@@ -12,11 +12,21 @@
                 <div class="product-info">
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
+                            @if ($product->images)
                             <div class="gallery">
-                                <div class="sp-wrap"><a href="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a><a href="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a><a href="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a></div>
+                                <div class="sp-wrap">
+                                    @foreach ($product->images as $image)
+                                        <a href="{{$image->path}}">
+                                            <img class="img-fluid d-block mx-auto" src="{{$image->path}}">
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div>
+                            @else
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png" alt="No image" class="mw-100">
+                            @endif
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mt-5">
                             <div class="info">
                                 <h3>{{$product->name}}</h3>
                                 @if ($product->rating)
