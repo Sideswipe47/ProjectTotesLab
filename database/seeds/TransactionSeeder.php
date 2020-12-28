@@ -29,7 +29,8 @@ class TransactionSeeder extends Seeder
         foreach ($users as $user) {
             if ($user->role == 'member') {
                 $count = 1;
-                for ($i = 0; $i < rand(3, 15); ++$i) {
+                $max = rand(3, 15);
+                for ($i = 0; $i < $max; ++$i) {
                     $delivery_service = $delivery_services[rand(0, count($delivery_services) - 1)];
                     $delivery_option = $delivery_service->deliveryOptions[rand(0, count($delivery_service->deliveryOptions) - 1)];
                     $promotion = null;

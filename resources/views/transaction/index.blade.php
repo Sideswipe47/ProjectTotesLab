@@ -31,7 +31,11 @@
                             </div>
                         </div>
                     @endforeach
-                    {{$transactions->links()}}
+                    <div class="d-flex flex-column">
+                        <div class="mx-auto">
+                            {{$transactions->links()}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

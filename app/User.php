@@ -49,7 +49,6 @@ class User extends Authenticatable
         }
 
         return $shopping_cart;
-
     }
 
     // Member has many Transactions done
