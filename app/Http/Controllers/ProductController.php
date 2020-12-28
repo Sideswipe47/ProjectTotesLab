@@ -24,4 +24,27 @@ class ProductController extends Controller
         $materials = Material::all();
         return view('product.create', compact('categories', 'sizes', 'materials'));
     }
+
+    // Post for Create
+    public function postCreate(Request $request) {
+        $request->validate([
+            'category' => ['required', 'exists:categories,id'],
+            'material' => ['required', 'exists:materials,id'],
+            'size' => ['required', 'exists:sizes,id'],
+            'name' => ['required', 'unique:products,name'],
+            'description' => ['nullable'],
+            'price' => ['required', 'integer', 'gt:0']
+        ]);
+
+        $product = Product::create([
+            'category_id' => $request->category,
+            'material_id' => $request->material,
+            'size_id' => $request->size,
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price
+        ]);
+
+        return redirect()->back()->with(['success' => $product->name . ' has been inserted']);
+    }
 }

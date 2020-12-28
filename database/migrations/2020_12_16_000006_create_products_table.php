@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('size_id')->nullable();
             $table->string('name');
             $table->string('image')->nullable();
+            $table->string('description')->nullable();
             $table->integer('price');
             $table->timestamps();
 
