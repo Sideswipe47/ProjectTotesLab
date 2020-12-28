@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     //
-    public function viewDetail(Request $request){
+    public function getProduct(Request $request){
         $product = Product::find($request->id);
         $reviews = $product->reviews;
         return view('main.productDetail', compact('product', 'reviews'));

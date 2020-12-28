@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\CartItem;
 use App\DeliveryService;
+use App\Product;
 use App\Transaction;
 use App\TransactionDetail;
+use App\TransactionStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -82,11 +84,12 @@ class ShoppingCartController extends Controller
             'user_id' => $user->id,
             'delivery_service_id' => $shoppingCart->deliveryService->id,
             'delivery_option_id' => $shoppingCart->deliveryOption->id,
-            'promotion_id' => $shoppingCart->userPromotion->id,
+            'promotion_id' => $shoppingCart->userPromotion ? $shoppingCart->userPromotion->id : null,
             'card_number' => $request->cardNumber,
             'address' => $shoppingCart->address,
             'note' => $shoppingCart->note
         ]);
+
 
         foreach ($shoppingCart->cartItems as $cartItem) {
             TransactionDetail::create([
@@ -97,6 +100,11 @@ class ShoppingCartController extends Controller
             ]);
             $cartItem->delete();
         }
+
+        TransactionStatus::create([
+            'transaction_id' => $transaction->id,
+            'description' => 'Waiting for Payment Confirmation',
+        ]);
 
         $shoppingCart->fill([
             'delivery_service_id' => null,

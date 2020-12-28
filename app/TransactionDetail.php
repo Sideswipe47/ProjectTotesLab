@@ -8,7 +8,7 @@ class TransactionDetail extends Model
 {
     
     // Fillables Property
-    protected $fillable = ['transaction_id', 'product_id', 'quantity'];
+    protected $fillable = ['transaction_id', 'product_id', 'quantity', 'price'];
 
     // Transaction Detail belongs to a Shopping Cart
     public function transaction() {

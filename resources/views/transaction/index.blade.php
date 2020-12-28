@@ -14,7 +14,7 @@
                             <div class="col-lg-5"><img class="rounded img-fluid" src="https://harvest-goods.com/wp-content/uploads/2018/09/tote-bag-geometry-depan.jpg"></div>
                             <div class="col-lg-7">
                                 <h3>Lorem Ipsum dolor sit amet</h3>
-                                <div class="info"><span class="text-muted">{{$t->created_at}}&nbsp;</span></div>
+                                <div class="info"><span class="text-muted">{{\Carbon\Carbon::parse($t->created_at)->setTimezone('Asia/Jakarta')->format('l, j F Y H:i:s')}}&nbsp;</span></div>
                                 <p>Status: {{$t->transactionStatuses->sortBy('created_at')->last()->description}}</p>
                                 <p>Content:</p>
                                 <ol>

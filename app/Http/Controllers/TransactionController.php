@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function  getAll(){
         $user = Auth::user();
-        $transactions = $user->transactions;
+        $transactions = $user->transactions->sortByDesc('created_at');
         return view('transaction.index', compact('transactions'));
     }
 

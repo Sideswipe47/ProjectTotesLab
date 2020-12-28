@@ -69,8 +69,8 @@
                                     @foreach ($products as $product)
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <div class="clean-product-item">
-                                            <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a></div>
-                                            <div class="product-name"><a href="{{url('/product/detail/id='.$product->id)}}">{{$product->name}}</a></div>
+                                            <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></a></div>
+                                            <div class="product-name"><a href="{{route('product/view', $product->id)}}">{{$product->name}}</a></div>
                                             <div class="about">
                                                 <div class="rating">
                                                     @for ($i = 0; $i < ceil($product->rating); ++$i)

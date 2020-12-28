@@ -12,7 +12,7 @@
                         <div class="progress-bar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
                     </div>
                     <div class="form-group"><label style="margin-top: 15px;">Your payment is being processed. Thank you for shopping with us</label></div>
-                    <div class="form-group"><a class="btn btn-primary btn-block" href="{{route('track')}}">Check Tracking</button></div>
+                    <div class="form-group"><a class="btn btn-primary btn-block" href="{{route('transaction')}}">Check Tracking</a></div>
                 </form>
             </div>
         </section>
