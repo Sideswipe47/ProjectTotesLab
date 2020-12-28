@@ -17,7 +17,7 @@ class UserReviewSeeder extends Seeder
     {
         
         // Faker
-        $faker = Faker\Factory::create();
+        $faker = \Faker\Factory::create();
 
         $users = User::all();
         $products = Product::all();
