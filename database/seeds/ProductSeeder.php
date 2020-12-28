@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class ProductSeeder extends Seeder
 {
     /**
-     * Run the database seeds. test
+     * Run the database seeds. tets
      *
      * @return void
      */
