@@ -15,7 +15,7 @@
                                 <div class="product">
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-3">
-                                            <div class="product-image"><img class="img-fluid d-block mx-auto image" src="https://harvest-goods.com/wp-content/uploads/2019/08/Totebag-Stripe-Blue.jpg"></div>
+                                            <div class="product-image"><img class="img-fluid d-block mx-auto image" src="{{$item->product->image ? asset('storage/img/' . $item->product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></div>
                                         </div>
                                         <div class="col-md-3 product-info"><a class="product-name" href="#">{{$item->product->name}}</a>
                                             <div class="product-specs">
