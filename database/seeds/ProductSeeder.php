@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
     {
         
         // Faker
-        $faker = \Faker\Factory::create();
+        $faker = Faker\Factory::create();
 
         // Types
         $categories = Category::all();
