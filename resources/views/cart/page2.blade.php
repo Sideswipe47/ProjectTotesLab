@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label>Notes</label>
-                        <textarea class="form-control {{$errors->has('note') ? 'is-invalid' : ''}}" id="note" name="note">{{$shoppingCart->note ? $shoppingCart->note : old('note')}}</textarea>
+                        <textarea class="form-control {{$errors->has('note') ? 'is-invalid' : ''}}" id="note" name="note" rows="3">{{$shoppingCart->note ? $shoppingCart->note : old('note')}}</textarea>
                         @error('note')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
