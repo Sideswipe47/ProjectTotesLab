@@ -44,6 +44,7 @@
                                 <div class="price">
                                     <h3>IDR {{$product->price}}</h3>
                                 </div>
+                                @if(Auth::check() && Auth::user()->role == 'member')
                                 <form action="{{route('cartAdd', $product->id)}}" method="POST" class="form-group">
                                     @csrf
                                     <div class="input-group mt-5">
@@ -53,7 +54,7 @@
                                         </span>
                                     </div>
                                 </form>
-
+                                @endif
                             </div>
                         </div>
                     </div>

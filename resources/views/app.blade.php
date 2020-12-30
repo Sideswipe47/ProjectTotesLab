@@ -33,7 +33,6 @@
 
                         @if(Auth::user()->role == 'admin')
                             <li class="nav-item"><a class="nav-link" href="{{route('product/create')}}">Add Product</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('cart/page/1')}}">View Transactions</a></li>
                         @endif
 
                         <li class="nav-item">
