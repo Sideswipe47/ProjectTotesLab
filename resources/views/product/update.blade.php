@@ -9,7 +9,6 @@
                 </div>
                 <form method="POST" action="{{route('product/create')}}">
                     @csrf
-                    
                     <div class="form-group"><label style="margin-top: 15px;">Category<span class="text-danger">*</span></label>
                         <select class="custom-select {{$errors->any() ? ($errors->has('category') ? 'is-invalid' : 'is-valid') : ''}}" name="category" id="category">
                             <option {{old('category') ? '' : 'selected'}} disabled value="">-- Select materials --</option>
@@ -79,7 +78,3 @@
 @if ($message = Session::get('success'))
     @include('components.modal', ['title' => 'Success', 'message' => $message])
 @endif
-@section('head')
-    @parent
-    <!-- <script type="text/javascript" src="{{asset('assets/js/payment.js')}}"></script> -->
-@endsection
