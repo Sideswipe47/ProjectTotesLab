@@ -13,33 +13,33 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             @if (count($product->images) != 0)
-                                <div class="gallery">
-                                    <div class="sp-wrap">
-                                        @foreach ($product->images as $image)
-                                            <a href="{{asset('storage/img/' . $image->path)}}">
-                                                <img class="img-fluid d-block mx-auto" src="{{asset('storage/img/' . $image->path)}}">
-                                            </a>
-                                        @endforeach
-                                    </div>
+                            <div class="gallery">
+                                <div class="sp-wrap">
+                                    @foreach ($product->images as $image)
+                                    <a href="{{asset('storage/img/' . $image->path)}}">
+                                        <img class="img-fluid d-block mx-auto" src="{{asset('storage/img/' . $image->path)}}">
+                                    </a>
+                                    @endforeach
                                 </div>
+                            </div>
                             @else
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png" alt="No image" class="mw-100">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png" alt="No image" class="mw-100">
                             @endif
                         </div>
                         <div class="col-md-6 mt-5">
                             <div class="info">
                                 <h3>{{$product->name}}</h3>
                                 @if ($product->rating)
-                                    <div class="rating">
-                                        @for ($i = 0; $i < ceil($product->rating); ++$i)
-                                            <img src="{{asset('assets/img/star.svg')}}">
+                                <div class="rating">
+                                    @for ($i = 0; $i < ceil($product->rating); ++$i)
+                                        <img src="{{asset('assets/img/star.svg')}}">
                                         @endfor
                                         @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
                                             <img src="{{asset('assets/img/star-empty.svg')}}">
-                                        @endfor
-                                    </div>
+                                            @endfor
+                                </div>
                                 @else
-                                    <p class="mb-0 text-muted">No rating</p>
+                                <p class="mb-0 text-muted">No rating</p>
                                 @endif
                                 <div class="price">
                                     <h3>IDR {{$product->price}}</h3>
@@ -68,11 +68,11 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane active fade show description" role="tabpanel" id="description">
                                 @if ($product->description)
-                                    @foreach (preg_split('/\r\n|\r|\n/', $product->description) as $paragraph)
-                                        <p>{{$paragraph}}</p>
-                                    @endforeach
+                                @foreach (preg_split('/\r\n|\r|\n/', $product->description) as $paragraph)
+                                <p>{{$paragraph}}</p>
+                                @endforeach
                                 @else
-                                    <p>No description</p>
+                                <p>No description</p>
                                 @endif
                             </div>
                             <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
@@ -97,24 +97,55 @@
                             </div>
                             <div class="tab-pane fade show" role="tabpanel" id="reviews">
                                 @forelse($reviews as $r)
-                                    <div class="reviews">
-                                        <div class="review-item">
-                                            <div class="rating">
-                                                @for ($i = 0; $i < ceil($r->rating); ++$i)
-                                                    <img src="{{asset('assets/img/star.svg')}}">
+                                <div class="reviews">
+                                    <div class="review-item">
+                                        <div class="rating">
+                                            @for ($i = 0; $i < ceil($r->rating); ++$i)
+                                                <img src="{{asset('assets/img/star.svg')}}">
                                                 @endfor
                                                 @for ($i = 0; $i < 5 - ceil($r->rating); ++$i)
                                                     <img src="{{asset('assets/img/star-empty.svg')}}">
-                                                @endfor
+                                                    @endfor
+                                        </div>
+                                        <h4>{{$r->subject}}</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('j F Y')}} at {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('H:i:s T')}}</span>
+                                        <p>{{$r->description}}</p>
+                                    </div>
+                                </div>
+                                @empty
+                                <p class="description">This product has no review yet</p>
+                                @endforelse
+
+                                @if(Auth::check() && Auth::user()->role == 'member')
+                                <form action="{{route('createReview', $product->id)}}" method="POST" autocomplete="off">
+                                    @csrf
+                                    <div class="reviews">
+                                        <div class="review-item">
+                                            <label for="title">Review Title</label><br>
+                                            <input type="text" name="title">
+                                            <div class="rating">
+                                                <p style="color: Black;">Rating:</p>
+                                                <input type="radio" id="r1" name="rating" value="1">
+                                                <label for="r1">1</label>
+                                                <input type="radio" id="r2" name="rating" value="2">
+                                                <label for="r2">2</label>
+                                                <input type="radio" id="r3" name="rating" value="3">
+                                                <label for="r3">3</label>
+                                                <input type="radio" id="r4" name="rating" value="4">
+                                                <label for="r4">4</label>
+                                                <input type="radio" id="r5" name="rating" value="5">
+                                                <label for="r5">5</label><br>
                                             </div>
-                                            <h4>{{$r->subject}}</h4><span class="text-muted"><a href="#">{{$r->user->name}}</a>, {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('j F Y')}} at {{\Carbon\Carbon::parse($r->created_at)->setTimezone('Asia/Jakarta')->format('H:i:s T')}}</span>
-                                            <p>{{$r->description}}</p>
+                                            <p>Write your review here</p>
+                                            <textarea type="text" name="description" class="md-textarea form-control" mdbInput></textarea>
+                                            <br>
+                                            <input type="submit">   
                                         </div>
                                     </div>
-                                @empty
-                                    <p class="description">This product has no review yet</p>
-                                @endforelse
+                                </form>
+                                @endif
+
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -123,27 +154,27 @@
                     <div class="items">
                         <div class="row justify-content-center">
                             @foreach ($relateds as $product)
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item h-100">
-                                        <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="{{$product->image ? asset('storage/img/' . $product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></a></div>
-                                        <div class="related-name">
-                                            <a href="{{route('product/view', $product->id)}}">{{$product->name}}</a>
-                                            @if ($product->rating)
-                                                <div class="rating">
-                                                    @for ($i = 0; $i < ceil($product->rating); ++$i)
-                                                        <img src="{{asset('assets/img/star.svg')}}">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="clean-related-item h-100">
+                                    <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="{{$product->image ? asset('storage/img/' . $product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></a></div>
+                                    <div class="related-name">
+                                        <a href="{{route('product/view', $product->id)}}">{{$product->name}}</a>
+                                        @if ($product->rating)
+                                        <div class="rating">
+                                            @for ($i = 0; $i < ceil($product->rating); ++$i)
+                                                <img src="{{asset('assets/img/star.svg')}}">
+                                                @endfor
+                                                @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
+                                                    <img src="{{asset('assets/img/star-empty.svg')}}">
                                                     @endfor
-                                                    @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
-                                                        <img src="{{asset('assets/img/star-empty.svg')}}">
-                                                    @endfor
-                                                </div>
-                                            @else
-                                                <p class="mb-0 text-muted">No rating</p>
-                                            @endif
-                                            <h4>IDR {{$product->price}}</h4>
                                         </div>
+                                        @else
+                                        <p class="mb-0 text-muted">No rating</p>
+                                        @endif
+                                        <h4>IDR {{$product->price}}</h4>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
                         </div>
                     </div>

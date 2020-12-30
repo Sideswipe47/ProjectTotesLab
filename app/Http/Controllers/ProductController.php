@@ -6,7 +6,9 @@ use App\Category;
 use App\Material;
 use App\Product;
 use App\Size;
+use App\UserReview;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -90,4 +92,20 @@ class ProductController extends Controller
         return redirect()->back()->with(['success' => $product->name . ' is deleted.']);
     }
 
+    //create a review 
+    public function postReview(Request $request){
+        $request->validate([
+            'description'=>['required'],
+            'title'=>['required']
+        ]);
+        $r = new UserReview;
+        $r->rating = $request->rating;
+        $r->subject = $request->title;
+        $r->description = $request->description;
+        $r->user_id = Auth::user()->id;
+        $r->product_id = $request->id;
+        $r->save();
+
+        return redirect()->back();
+    }
 }
