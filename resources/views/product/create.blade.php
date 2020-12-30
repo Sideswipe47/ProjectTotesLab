@@ -79,7 +79,3 @@
 @if ($message = Session::get('success'))
     @include('components.modal', ['title' => 'Success', 'message' => $message])
 @endif
-@section('head')
-    @parent
-    <!-- <script type="text/javascript" src="{{asset('assets/js/payment.js')}}"></script> -->
-@endsection
