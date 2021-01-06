@@ -52,4 +52,4 @@
         </div>
     </section>
 </main>
-@endcontent
+@endsection

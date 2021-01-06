@@ -17,6 +17,9 @@ class MainController extends Controller
         // Products
         $products = Product::all()->toQuery();
 
+        // Searching Products
+        $products = $products->where('name', 'like', '%' . $request->search . '%');
+
         // Filtering Products
         if ($request->size) {
             $products = $products->whereIn('size_id', $request->size);
@@ -35,7 +38,7 @@ class MainController extends Controller
 
         // Append
         $products = $products->paginate(9);
-        $products->appends(['size' => $request->size, 'material' => $request->material, 'category' => $request->category]);
+        $products->appends(['search' => $request->search, 'size' => $request->size, 'material' => $request->material, 'category' => $request->category]);
 
         return view('main.home', compact('categories', 'materials', 'sizes', 'products', 'request'));
 
