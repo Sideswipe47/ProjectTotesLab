@@ -143,7 +143,7 @@ class ShoppingCartController extends Controller
 
     }
 
-
+    //
     public function postAdd(Request $request){
         $p = Product::find($request->id);
         //validate
