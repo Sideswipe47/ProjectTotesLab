@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CartItem;
 use App\DeliveryService;
 use App\Product;
+use App\ShoppingCart;
 use App\Transaction;
 use App\TransactionDetail;
 use App\TransactionStatus;
@@ -143,10 +144,10 @@ class ShoppingCartController extends Controller
 
     }
 
-    //
+    // Add to Cart
     public function postAdd(Request $request){
-        $p = Product::find($request->id);
-        //validate
+        $p = Product::findOrFail($request->id);
+        
         $request->validate([
             'quantity' => ['gt:0', 'required', 'integer']
         ]);
@@ -155,6 +156,32 @@ class ShoppingCartController extends Controller
         $ci->shopping_cart_id = Auth::user()->shoppingCart->id;
         $ci->product_id = $p->id;
         $ci->quantity = $request->quantity;
+        $ci->save();
+
+        return redirect()->back()->with(['success' => $p->name . ' is added to your cart.']);
 
     }
+
+    // Update Cart
+    public function postUpdate(Request $request){
+
+        $ci = CartItem::findOrFail($request->id);
+        $p = Product::findOrFail($request->id);
+        
+        $request->validate([
+            'quantity' => ['gte:0', 'required', 'integer']
+        ]);
+
+        if ($request->quantity == 0) {
+            $ci->delete();
+            return redirect()->back()->with(['success' => $p->name . ' is removed from your cart.']);
+        }
+        
+        $ci->quantity = $request->quantity;
+        $ci->save();
+
+        return redirect()->back()->with(['success' => $p->name . ' is updated in your cart.']);
+
+    }
+
 }

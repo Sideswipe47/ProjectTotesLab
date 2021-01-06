@@ -45,15 +45,33 @@
                                     <h3>IDR {{$product->price}}</h3>
                                 </div>
                                 @if(Auth::check() && Auth::user()->role == 'member')
-                                <form action="{{route('cartAdd', $product->id)}}" method="POST" class="form-group">
-                                    @csrf
-                                    <div class="input-group mt-5">
-                                        <input type="number" id="quantity" name="quantity" class="form-control quantity-input">
-                                        <span class="input-group-append">
-                                            <button class="btn btn-primary mb-0 py-0">Add to cart</button>
-                                        </span>
-                                    </div>
-                                </form>
+                                    @if ($cartItem)
+                                        <form action="{{route('cartUpdate', ['id' => $cartItem->id, 'productId' => $product->id])}}" method="POST" class="form-group">
+                                            @csrf
+                                            <div class="input-group mt-5">
+                                                <input type="number" id="quantity" name="quantity" class="form-control quantity-input {{$errors->has('quantity') ? 'is-invalid' : ''}}" value="{{old('quantity') ?? $cartItem->quantity}}">
+                                                <span class="input-group-append">
+                                                    <button class="btn btn-primary mb-0 py-0">Update cart</button>
+                                                </span>
+                                            </div>
+                                            @error('quantity')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
+                                        </form>
+                                    @else
+                                        <form action="{{route('cartAdd', $product->id)}}" method="POST" class="form-group">
+                                            @csrf
+                                            <div class="input-group mt-5">
+                                                <input type="number" id="quantity" name="quantity" class="form-control quantity-input {{$errors->has('quantity') ? 'is-invalid' : ''}}">
+                                                <span class="input-group-append">
+                                                    <button class="btn btn-primary mb-0 py-0">Add to cart</button>
+                                                </span>
+                                            </div>
+                                            @error('quantity')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
+                                        </form>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -184,4 +202,7 @@
         </div>
     </section>
 </main>
+    @if ($message = Session::get('success'))
+        @include('components.modal', ['title' => 'Success', 'message' => $message])
+    @endif
 @endsection

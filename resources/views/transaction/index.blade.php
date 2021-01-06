@@ -11,7 +11,7 @@
                     @foreach($transactions as $index=>$t)
                         <div class="clean-blog-post">
                             <div class="row">
-                                <div class="col-lg-5"><img class="rounded img-fluid" src="https://harvest-goods.com/wp-content/uploads/2018/09/tote-bag-geometry-depan.jpg"></div>
+                                <div class="col-lg-5"><img class="rounded img-fluid" src="{{$t->transactionDetail->product ? ($t->transactionDetail->product->image ? asset('storage/img/' . $t->transactionDetail->product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png') : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></div>
                                 <div class="col-lg-7">
                                     <h3>Transaction #{{$transactions->total() - (($transactions->currentPage() - 1) * $transactions->perPage() + $index)}}</h3>
                                     <div class="info"><span class="text-muted">{{\Carbon\Carbon::parse($t->created_at)->setTimezone('Asia/Jakarta')->format('j F Y')}} at {{\Carbon\Carbon::parse($t->created_at)->setTimezone('Asia/Jakarta')->format('H:i:s T')}}&nbsp;</span></div>
@@ -20,7 +20,7 @@
                                     <ol>
                                         @foreach($t->transactionDetails as $td)
                                             <li>
-                                                {{$td->product->name}}
+                                                {{$td->product ? $td->product->name : 'Item is no longer available'}}
                                             </li>
                                         @endforeach
                                     </ol>

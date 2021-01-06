@@ -20,6 +20,11 @@ class Transaction extends Model
         return $this->hasMany(TransactionDetail::class);
     }
 
+    // Get First Cart Item of a Transaction
+    public function transactionDetail() {
+        return $this->hasOne(TransactionDetail::class);
+    }
+
     // Transaction has many Status
     public function transactionStatuses() {
         return $this->hasMany(TransactionStatus::class);
