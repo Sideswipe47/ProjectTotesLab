@@ -68,21 +68,22 @@ class ProductController extends Controller
             'category' => ['required', 'exists:categories,id'],
             'material' => ['required', 'exists:materials,id'],
             'size' => ['required', 'exists:sizes,id'],
-            'name' => ['required', 'unique:products,name'],
+            'name' => ['required', 'unique:products,name,' . $request->id],
             'description' => ['nullable'],
             'price' => ['required', 'integer', 'gt:0']
         ]);
 
-        $product = Product::create([
+        $product = Product::findOrFail($request->id);
+        $product->fill([
             'category_id' => $request->category,
             'material_id' => $request->material,
             'size_id' => $request->size,
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price
-        ]);
+        ])->save();
 
-        return redirect()->route('product/update')->with(['success' => $product->name . ' has been updated']);
+        return redirect()->route('product/update', $product->id)->with(['success' => $product->name . ' has been updated']);
     }
 
     // Post for Delete
