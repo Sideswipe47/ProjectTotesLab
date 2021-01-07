@@ -81,7 +81,7 @@
                                                     <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="{{$product->image ? asset('storage/img/' . $product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></a></div>
                                                     <div class="product-name"><a href="{{route('product/view', $product->id)}}">{{$product->name}}</a></div>
                                                     <div class="about">
-                                                        @if ($product->rating)
+                                                        @if ($product->rating != null)
                                                             <div class="rating">
                                                                 @for ($i = 0; $i < ceil($product->rating); ++$i)
                                                                     <img src="{{asset('assets/img/star.svg')}}">

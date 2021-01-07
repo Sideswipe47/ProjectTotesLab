@@ -29,17 +29,17 @@
                         <div class="col-md-6 mt-5">
                             <div class="info">
                                 <h3>{{$product->name}}</h3>
-                                @if ($product->rating)
-                                <div class="rating">
-                                    @for ($i = 0; $i < ceil($product->rating); ++$i)
-                                        <img src="{{asset('assets/img/star.svg')}}">
+                                @if ($product->rating != null)
+                                    <div class="rating">
+                                        @for ($i = 0; $i < ceil($product->rating); ++$i)
+                                            <img src="{{asset('assets/img/star.svg')}}">
                                         @endfor
                                         @for ($i = 0; $i < 5 - ceil($product->rating); ++$i)
                                             <img src="{{asset('assets/img/star-empty.svg')}}">
-                                            @endfor
-                                </div>
+                                        @endfor
+                                    </div>
                                 @else
-                                <p class="mb-0 text-muted">No rating</p>
+                                    <p class="mb-0 text-muted">No rating</p>
                                 @endif
                                 <div class="price">
                                     <h3>IDR {{$product->price}}</h3>
@@ -178,7 +178,7 @@
                                     <div class="image"><a href="{{route('product/view', $product->id)}}"><img class="img-fluid d-block mx-auto" src="{{$product->image ? asset('storage/img/' . $product->image->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png'}}"></a></div>
                                     <div class="related-name">
                                         <a href="{{route('product/view', $product->id)}}">{{$product->name}}</a>
-                                        @if ($product->rating)
+                                        @if ($product->rating != null)
                                         <div class="rating">
                                             @for ($i = 0; $i < ceil($product->rating); ++$i)
                                                 <img src="{{asset('assets/img/star.svg')}}">
