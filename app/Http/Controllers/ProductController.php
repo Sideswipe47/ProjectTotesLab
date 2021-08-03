@@ -19,7 +19,10 @@ class ProductController extends Controller
         $relateds[] = Product::where('size_id', $product->size_id)->where('id', '!=', $product->id)->inRandomOrder()->first();
         $relateds[] = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->inRandomOrder()->first();
         $relateds[] = Product::where('material_id', $product->material_id)->where('id', '!=', $product->id)->inRandomOrder()->first();
-        $cartItem = Auth::user()->shoppingCart->cartItems->where('product_id', $product->id)->first();
+        $cartItem = null;
+        if (Auth::check() && Auth::user()->role == "member") {
+            $cartItem = Auth::user()->shoppingCart->cartItems->where('product_id', $product->id)->first();
+        }
         return view('product.index', compact('product', 'reviews', 'relateds', 'cartItem'));
     }
 

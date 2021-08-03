@@ -129,7 +129,7 @@ class ShoppingCartController extends Controller
     public function postUpdateItem(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'quantity' => ['required', 'integer', 'gt:0']
+            'quantity' => ['required', 'integer', 'gte:0']
         ]);
 
         if ($validator->fails()) {
@@ -137,9 +137,13 @@ class ShoppingCartController extends Controller
         }
 
         $cartItem = CartItem::findOrFail($request->id);
-        $cartItem->quantity = $request->quantity;
-        $cartItem->save();
-
+        if ($request->quantity > 0) {
+            $cartItem->quantity = $request->quantity;
+            $cartItem->save();
+        } else {
+            $cartItem->delete();
+        }
+        
         return redirect()->route('cart/page/1')->with(['success' . $request->id => 'Quantity has been updated']);
 
     }
